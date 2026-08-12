@@ -12,24 +12,28 @@ const metrics = [
 const strengths = [
   {
     number: "01",
+    icon: "🧩",
     title: "AI 产品运营",
     text: "经历过智能体从需求理解、定位设计、Prompt 编写到测试调优的完整流程。",
     proof: "11 个智能体独立搭建",
   },
   {
     number: "02",
+    icon: "🔍",
     title: "用户与内容洞察",
     text: "能够从用户反馈与使用场景中识别问题，转化为内容配置和体验优化建议。",
     proof: "4 个线上产品持续优化",
   },
   {
     number: "03",
+    icon: "🚀",
     title: "内容策划与增长",
     text: "理解选题、叙事、视觉和传播链路，兼顾内容质量、发布效率与传播结果。",
     proof: "200+ 条内容制作经验",
   },
   {
     number: "04",
+    icon: "✨",
     title: "AI 工具驱动执行",
     text: "善于使用 Codex、TRAE、GitHub 等 AI 与协作工具，辅助信息整理、原型搭建、内容生产和快速验证。",
     proof: "把工具真正转化为交付效率",
@@ -134,11 +138,6 @@ export default function Home() {
   const [introExpanded, setIntroExpanded] = useState(false);
 
   useEffect(() => {
-    const hasSeenIntro = window.sessionStorage.getItem("tm-portfolio-intro") === "seen";
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (hasSeenIntro || prefersReducedMotion) setIntroOpen(false);
-
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIntroOpen(false);
     };
@@ -148,7 +147,6 @@ export default function Home() {
   }, []);
 
   const enterPortfolio = () => {
-    window.sessionStorage.setItem("tm-portfolio-intro", "seen");
     setIntroOpen(false);
   };
 
@@ -300,7 +298,10 @@ export default function Home() {
         <div className="strength-grid">
           {strengths.map((item) => (
             <article className="strength-card" key={item.number}>
-              <span className="card-number">{item.number}</span>
+              <div className="strength-card-top">
+                <span className="strength-icon" aria-hidden="true">{item.icon}</span>
+                <span className="card-number">{item.number}</span>
+              </div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
               <strong>{item.proof} <span>↗</span></strong>
@@ -411,80 +412,68 @@ export default function Home() {
       <section className="experience-section" id="experience">
         <div className="section-title-row">
           <div><p className="section-label">02 / EXPERIENCE</p><h2>代表经历</h2></div>
-          <p>聚焦与 AI 产品运营和内容增长最相关的两段实践，呈现“做了什么、如何做、产生了什么结果”。</p>
+          <p>先快速浏览两段核心实践，再进入二级页面查看完整工作方法、关键动作与成果。</p>
         </div>
 
-        <article className="case-card case-dark">
-          <div className="case-side">
-            <span className="company-index">01</span>
-            <div><p>2024.10 — 2025.02</p><p>北京</p></div>
-          </div>
-          <div className="case-body">
-            <div className="case-header">
-              <div><p>小米科技有限责任公司</p><h3>AI 产品运营</h3></div>
-              <span className="case-badge">AI AGENT</span>
-            </div>
-            <div className="case-result-grid">
-              <div><strong>11</strong><span>独立搭建智能体</span></div>
-              <div><strong>4</strong><span>线上智能体优化</span></div>
-              <div><strong>全流程</strong><span>定位—测试—调优</span></div>
-            </div>
-            <div className="case-steps">
-              <div><span>需求与定位</span><p>围绕真实用户需求梳理使用场景，明确智能体角色、功能边界与内容方向。</p></div>
-              <div><span>设计与验证</span><p>完成 Prompt 设计、功能测试和内容调优，持续检查回答质量与交互体验。</p></div>
-              <div><span>反馈与迭代</span><p>归纳用户反馈，参与竞品与运营策略分析，输出内容配置优化和迭代建议。</p></div>
-            </div>
-            <div className="tag-list"><span>Prompt Design</span><span>Agent Testing</span><span>User Feedback</span><span>Competitive Research</span></div>
-          </div>
-        </article>
+        <div className="experience-overview">
+          <a className="experience-tile experience-tile-ai" href="/experience/xiaomi" aria-label="查看小米 AI 产品运营完整经历">
+            <div className="experience-tile-top"><span>01 / AI PRODUCT</span><b>🤖</b></div>
+            <div className="experience-company"><p>小米科技有限责任公司</p><span>2024.10 — 2025.02 · 北京</span></div>
+            <h3>AI 产品运营</h3>
+            <p className="experience-summary">覆盖智能体定位、Prompt 设计、功能测试、内容调优与用户反馈分析。</p>
+            <div className="experience-metrics"><span><strong>11</strong>独立搭建</span><span><strong>4</strong>线上优化</span><span><strong>全流程</strong>定位至迭代</span></div>
+            <div className="experience-link">查看完整案例 <i>↗</i></div>
+          </a>
 
-        <article className="case-card case-light">
-          <div className="case-side">
-            <span className="company-index">02</span>
-            <div><p>2024.02 — 2024.06</p><p>北京</p></div>
-          </div>
-          <div className="case-body">
-            <div className="case-header">
-              <div><p>新华社中国证券报</p><h3>视频策划与后期制作</h3></div>
-              <span className="case-badge">CONTENT</span>
-            </div>
-            <div className="case-result-grid">
-              <div><strong>200+</strong><span>财经新闻短视频</span></div>
-              <div><strong>5</strong><span>董事长专访片</span></div>
-              <div><strong>1000万+</strong><span>内容总播放量</span></div>
-            </div>
-            <div className="case-steps">
-              <div><span>重点栏目</span><p>参与《两会面对面》《两会新观察》《新质生产力图鉴》等重点财经栏目制作。</p></div>
-              <div><span>内容生产</span><p>参与选题包装、素材整理、字幕校对和后期优化，理解财经内容的专业表达。</p></div>
-              <div><span>传播结果</span><p>在高频内容生产中兼顾效率与质量，参与作品累计获得 1000 万+ 播放量。</p></div>
-            </div>
-            <div className="tag-list"><span>Content Strategy</span><span>Short Video</span><span>Financial Media</span><span>Visual Storytelling</span></div>
-          </div>
-        </article>
+          <a className="experience-tile experience-tile-content" href="/experience/china-securities" aria-label="查看中国证券报视频内容完整经历">
+            <div className="experience-tile-top"><span>02 / CONTENT GROWTH</span><b>🎬</b></div>
+            <div className="experience-company"><p>新华社中国证券报</p><span>2024.02 — 2024.06 · 北京</span></div>
+            <h3>视频策划与后期制作</h3>
+            <p className="experience-summary">参与重点栏目、人物专访与高频短视频生产，兼顾专业表达和传播效率。</p>
+            <div className="experience-metrics"><span><strong>200+</strong>短视频</span><span><strong>5</strong>人物专访</span><span><strong>1000万+</strong>总播放量</span></div>
+            <div className="experience-link">查看完整案例 <i>↗</i></div>
+          </a>
+        </div>
       </section>
 
       <section className="background-section" id="background">
-        <div className="background-grid">
-          <div className="education-column">
-            <p className="section-label">03 / BACKGROUND</p>
-            <h2>教育背景</h2>
-            <article className="education-item current">
-              <span>2025.09 — 至今</span>
-              <div><strong>武汉大学 · 硕士研究生</strong><h3>广告与媒介经济</h3><p>品牌传播、媒介经济、数字营销、内容传播</p></div>
-            </article>
-            <article className="education-item">
-              <span>2021.09 — 2025.06</span>
-              <div><strong>武汉大学 · 本科</strong><h3>广播电视学</h3><p>武汉大学优秀毕业生</p></div>
-            </article>
-          </div>
+        <div className="education-heading">
+          <div><p className="section-label">03 / LEARNING PATH</p><h2>我的学习坐标</h2></div>
+          <p>从内容创作与影像叙事出发，进一步走向品牌传播、数字营销与 AI 产品运营。</p>
+        </div>
 
-          <div className="awards-column">
-            <div className="column-heading"><h2>荣誉奖项</h2><span>SELECTED</span></div>
-            <div className="award-list">
-              {awards.map(([year, title, result]) => (
-                <article key={`${year}-${title}`}><span>{year}</span><div><h3>{title}</h3><p>{result}</p></div></article>
-              ))}
+        <div className="learning-path">
+          <article className="education-card education-card-master">
+            <div className="education-illustration" aria-hidden="true"><span>🎓</span><i>AI</i><b>✦</b></div>
+            <div className="education-card-body">
+              <span className="education-date">2025.09 — 至今</span>
+              <strong>硕士研究生 · 广告与媒介经济</strong>
+              <h3>武汉大学</h3>
+              <p>关注品牌传播、媒介经济、数字营销与 AI 产品内容，持续建立“洞察—产品—增长”的复合能力。</p>
+              <div className="education-tags"><span>数字营销</span><span>品牌传播</span><span>AI 产品</span></div>
             </div>
+          </article>
+
+          <div className="growth-connector" aria-hidden="true"><span>成长路径</span><i>←</i></div>
+
+          <article className="education-card education-card-bachelor">
+            <div className="education-illustration" aria-hidden="true"><span>🎥</span><i>WHU</i><b>★</b></div>
+            <div className="education-card-body">
+              <span className="education-date">2021.09 — 2025.06</span>
+              <strong>本科 · 广播电视学</strong>
+              <h3>武汉大学</h3>
+              <p>系统学习新闻采写、影像制作与内容传播，在真实项目中训练策划、叙事和执行能力。</p>
+              <div className="education-tags"><span>优秀毕业生</span><span>内容创作</span><span>影像叙事</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div className="awards-showcase">
+          <div className="awards-showcase-heading"><span aria-hidden="true">🏆</span><div><p className="section-label">SELECTED HONORS</p><h2>荣誉奖项</h2></div></div>
+          <div className="award-list">
+            {awards.map(([year, title, result]) => (
+              <article key={`${year}-${title}`}><span>{year}</span><div><h3>{title}</h3><p>{result}</p></div></article>
+            ))}
           </div>
         </div>
 
