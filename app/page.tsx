@@ -28,6 +28,12 @@ const strengths = [
     text: "理解选题、叙事、视觉和传播链路，兼顾内容质量、发布效率与传播结果。",
     proof: "200+ 条内容制作经验",
   },
+  {
+    number: "04",
+    title: "AI 工具驱动执行",
+    text: "善于使用 Codex、TRAE、GitHub 等 AI 与协作工具，辅助信息整理、原型搭建、内容生产和快速验证。",
+    proof: "把工具真正转化为交付效率",
+  },
 ];
 
 const portfolioArchive = [
@@ -175,19 +181,27 @@ export default function Home() {
             onPointerLeave={() => setIntroExpanded(false)}
           >
             <span className="intro-card intro-card-one">
-              <img src="/portfolio/projects/data-news.jpg" alt="" />
+              <span className="intro-card-art intro-art-story" aria-hidden="true">
+                <span className="art-spark">✦</span><span className="art-emoji">📝</span><b>•••</b>
+              </span>
               <i>DATA STORY</i>
             </span>
             <span className="intro-card intro-card-two">
-              <img src="/lifestyle-portrait.jpg" alt="" />
+              <span className="intro-card-art intro-art-about" aria-hidden="true">
+                <span className="art-bubble">HELLO!</span><img src="/avatar-emoji.png" alt="" />
+              </span>
               <i>ABOUT ME</i>
             </span>
             <span className="intro-card intro-card-three">
-              <img src="/portfolio/alttab-poster.jpg" alt="" />
+              <span className="intro-card-art intro-art-ai" aria-hidden="true">
+                <span className="art-spark">✦</span><span className="art-emoji">🤖</span><b>AI</b>
+              </span>
               <i>AI PRODUCT</i>
             </span>
             <span className="intro-card intro-card-four">
-              <img src="/football/football-dribble.jpg" alt="" />
+              <span className="intro-card-art intro-art-football" aria-hidden="true">
+                <span className="art-ball">⚽</span><span className="art-player">07</span><b>GO!</b>
+              </span>
               <i>FOOTBALL</i>
             </span>
             <span className="intro-mini-sticker intro-mini-star" aria-hidden="true">✦</span>
@@ -281,7 +295,7 @@ export default function Home() {
         <div className="section-intro">
           <p className="section-label">01 / ROLE FIT</p>
           <h2>我能为团队<br />带来什么？</h2>
-          <p>不是简单罗列技能，而是用已经发生过的结果，说明我与目标岗位的匹配度。</p>
+          <p>我能把用户洞察、产品运营、内容表达与 AI 工具串成完整工作流：既能独立推进，也能依据数据和反馈持续迭代，把想法更快落成可验证的结果。</p>
         </div>
         <div className="strength-grid">
           {strengths.map((item) => (
@@ -292,19 +306,6 @@ export default function Home() {
               <strong>{item.proof} <span>↗</span></strong>
             </article>
           ))}
-        </div>
-        <div className="professional-facts">
-          <div className="facts-heading">
-            <p className="section-label">PROFESSIONAL TOOLKIT</p>
-            <h3>专业能力与工具</h3>
-            <p>把产品方法、内容能力与协作工具，组合成可执行的工作流。</p>
-          </div>
-          <div className="facts-grid">
-            <article><span>PRODUCT &amp; AI</span><strong>Prompt 设计 · 智能体测试 · 用户反馈 · 竞品分析</strong></article>
-            <article><span>DATA &amp; BUILD</span><strong>SQL · GitHub · TRAE · Codex</strong></article>
-            <article><span>GROWTH CHANNELS</span><strong>Discord · X · LinkedIn</strong></article>
-            <article><span>LANGUAGE</span><strong>IELTS 7.0 · 英文资料检索与沟通</strong></article>
-          </div>
         </div>
       </section>
 
