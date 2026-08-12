@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useEffect, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 
 const metrics = [
   { value: "11", label: "独立搭建 AI 智能体", detail: "从定位到上线" },
@@ -127,10 +127,14 @@ const portfolioArchive = [
 ];
 
 const awards = [
-  ["2024", "第十六届大学生广告艺术大赛", "国家级三等奖"],
-  ["2024", "中国大学生计算机设计大赛", "省级二等奖"],
-  ["2023", "第八届中国数据新闻大赛", "国家级三等奖"],
-  ["2021—2024", "武汉大学新闻与传播学院", "连续三学年奖学金、优秀学生"],
+  { year: "2024", title: "第十六届大学生广告艺术大赛", result: "国家级三等奖", icon: "🏆", tone: "cyan" },
+  { year: "2024", title: "第十七届中国大学生计算机设计大赛", result: "省级二等奖", icon: "💻", tone: "yellow" },
+  { year: "2023", title: "第八届中国数据新闻大赛", result: "国家级三等奖", icon: "📊", tone: "blue" },
+  { year: "2023", title: "第十五届大学生广告艺术大赛", result: "国家级优秀奖", icon: "💡", tone: "pink" },
+  { year: "2021—2024", title: "武汉大学新闻与传播学院奖学金", result: "连续三学年获得", icon: "🎓", tone: "mint" },
+  { year: "2021—2024", title: "武汉大学优秀学生", result: "连续三学年获得 · 武汉大学优秀毕业生", icon: "🌟", tone: "yellow" },
+  { year: "2023", title: "武汉大学新闻与传播学院", result: "优秀志愿者", icon: "🤝", tone: "pink" },
+  { year: "2024", title: "武汉大学", result: "社会活动积极分子", icon: "🌱", tone: "mint" },
 ];
 
 export default function Home() {
@@ -221,7 +225,7 @@ export default function Home() {
                 <span className="intro-eye"><i /></span>
               </span>
               <strong>谭美玲</strong>
-              <small>让 AI 产品更好用，也更易被看见。</small>
+              <small>让 AI 产品更好用，也更易被看见</small>
               <span className="intro-enter"><span>HOVER TO EXPLORE</span><b>↗</b></span>
             </button>
           </div>
@@ -252,7 +256,7 @@ export default function Home() {
             <span className="status-dot" /> 求职方向：AI 产品运营 · 产品运营 · 内容增长
           </div>
           <p className="hero-identity"><strong>谭美玲</strong> <span>TAN MEILING</span></p>
-          <h1>让 AI 产品<br /><em>更好用，也更易被看见。</em></h1>
+          <h1><span>让 AI 产品</span><em>更好用，也更易被看见</em></h1>
           <p className="hero-summary">
             武汉大学广告与媒介经济专业硕士研究生，具备 AI 智能体运营与内容生产经验。
             擅长从用户需求出发，把洞察转化为可落地的产品内容和持续迭代方案。
@@ -299,10 +303,9 @@ export default function Home() {
           {strengths.map((item) => (
             <article className="strength-card" key={item.number}>
               <div className="strength-card-top">
-                <span className="strength-icon" aria-hidden="true">{item.icon}</span>
+                <div className="strength-title"><span className="strength-icon" aria-hidden="true">{item.icon}</span><h3>{item.title}</h3></div>
                 <span className="card-number">{item.number}</span>
               </div>
-              <h3>{item.title}</h3>
               <p>{item.text}</p>
               <strong>{item.proof} <span>↗</span></strong>
             </article>
@@ -412,13 +415,13 @@ export default function Home() {
       <section className="experience-section" id="experience">
         <div className="section-title-row">
           <div><p className="section-label">02 / EXPERIENCE</p><h2>代表经历</h2></div>
-          <p>先快速浏览两段核心实践，再进入二级页面查看完整工作方法、关键动作与成果。</p>
+          <p>一段聚焦 AI 智能体从 0 到 1 的产品运营，一段沉淀高频内容生产与千万级传播成果，共同构成我的“产品 × 内容 × 增长”实践。</p>
         </div>
 
         <div className="experience-overview">
           <a className="experience-tile experience-tile-ai" href="/experience/xiaomi" aria-label="查看小米 AI 产品运营完整经历">
             <div className="experience-tile-top"><span>01 / AI PRODUCT</span><b>🤖</b></div>
-            <div className="experience-company"><p>小米科技有限责任公司</p><span>2024.10 — 2025.02 · 北京</span></div>
+            <div className="experience-company"><p>小米科技有限责任公司</p><span>2024.10 — 2025.02 · 武汉</span></div>
             <h3>AI 产品运营</h3>
             <p className="experience-summary">覆盖智能体定位、Prompt 设计、功能测试、内容调优与用户反馈分析。</p>
             <div className="experience-metrics"><span><strong>11</strong>独立搭建</span><span><strong>4</strong>线上优化</span><span><strong>全流程</strong>定位至迭代</span></div>
@@ -444,7 +447,7 @@ export default function Home() {
 
         <div className="learning-path">
           <article className="education-card education-card-master">
-            <div className="education-illustration" aria-hidden="true"><span>🎓</span><i>AI</i><b>✦</b></div>
+            <div className="education-illustration" aria-hidden="true"><span>🎓</span><i>WHU</i><b>珞珈</b><em>🌸</em><small>武汉大学</small></div>
             <div className="education-card-body">
               <span className="education-date">2025.09 — 至今</span>
               <strong>硕士研究生 · 广告与媒介经济</strong>
@@ -457,7 +460,7 @@ export default function Home() {
           <div className="growth-connector" aria-hidden="true"><span>成长路径</span><i>←</i></div>
 
           <article className="education-card education-card-bachelor">
-            <div className="education-illustration" aria-hidden="true"><span>🎥</span><i>WHU</i><b>★</b></div>
+            <div className="education-illustration" aria-hidden="true"><span>🎥</span><i>WHU</i><b>新闻</b><em>🌸</em><small>珞珈山</small></div>
             <div className="education-card-body">
               <span className="education-date">2021.09 — 2025.06</span>
               <strong>本科 · 广播电视学</strong>
@@ -469,18 +472,29 @@ export default function Home() {
         </div>
 
         <div className="awards-showcase">
-          <div className="awards-showcase-heading"><span aria-hidden="true">🏆</span><div><p className="section-label">SELECTED HONORS</p><h2>荣誉奖项</h2></div></div>
-          <div className="award-list">
-            {awards.map(([year, title, result]) => (
-              <article key={`${year}-${title}`}><span>{year}</span><div><h3>{title}</h3><p>{result}</p></div></article>
+          <div className="awards-showcase-heading"><span aria-hidden="true">🏆</span><div><p className="section-label">HONORS EXHIBITION</p><h2>荣誉画廊</h2><p>从专业竞赛到校园荣誉，完整记录每一次投入得到的回应。</p></div></div>
+          <div className="honors-gallery" aria-label="荣誉奖项画廊">
+            {awards.map((award, index) => (
+              <article className={`honor-frame honor-${award.tone}`} style={{ "--frame-order": index } as CSSProperties} key={`${award.year}-${award.title}`}>
+                <div className="honor-art"><span>{award.icon}</span><i>{String(index + 1).padStart(2, "0")}</i></div>
+                <div className="honor-caption"><span>{award.year}</span><h3>{award.title}</h3><p>{award.result}</p></div>
+              </article>
             ))}
           </div>
         </div>
 
-        <div className="campus-block">
-          <div><p className="section-label">LEADERSHIP</p><h2>校园经历</h2></div>
-          <article><span>2022.06 — 2024.01</span><h3>武汉大学体育部宣传中心学生记者团</h3><p>主要负责人 · 组织记者团工作，参与大型赛事新闻及系列短视频的制作与审核。</p></article>
-          <article><span>2022.06 — 2023.05</span><h3>武汉大学新闻与传播学院社团服务中心</h3><p>负责人 · 管理学院社团日常事务，主办武汉大学公益广告大赛。</p></article>
+        <div className="campus-stage">
+          <div className="campus-stage-heading"><div><p className="section-label">CAMPUS ROLES</p><h2>我的校园角色</h2></div><p>不只参与活动，也负责把人、内容和流程组织起来。</p></div>
+          <div className="campus-role-grid">
+            <article className="campus-role campus-role-media">
+              <div className="campus-role-art" aria-hidden="true"><span>🎙️</span><b>PRESS</b><i>📹</i></div>
+              <div className="campus-role-copy"><span>2022.06 — 2024.01</span><p>ROLE 01 · 内容统筹</p><h3>体育部宣传中心<br />学生记者团</h3><strong>主要负责人</strong><p>组织和指导记者团工作，参与大型赛事新闻、系列短视频的制作与审核。</p><div><i>团队协作</i><i>内容审核</i><i>赛事传播</i></div></div>
+            </article>
+            <article className="campus-role campus-role-community">
+              <div className="campus-role-art" aria-hidden="true"><span>🪄</span><b>EVENT</b><i>📌</i></div>
+              <div className="campus-role-copy"><span>2022.06 — 2023.05</span><p>ROLE 02 · 项目组织</p><h3>新闻与传播学院<br />社团服务中心</h3><strong>负责人</strong><p>统筹学院社团日常事务与活动支持，主办武汉大学公益广告大赛。</p><div><i>项目管理</i><i>活动策划</i><i>资源协调</i></div></div>
+            </article>
+          </div>
         </div>
       </section>
 

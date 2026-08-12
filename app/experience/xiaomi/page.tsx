@@ -9,7 +9,7 @@ export default function XiaomiExperience() {
       <header className="detail-hero">
         <div className="detail-hero-copy">
           <p className="detail-kicker">01 / AI PRODUCT OPERATION</p>
-          <p className="detail-company">小米科技有限责任公司 · 2024.10—2025.02 · 北京</p>
+          <p className="detail-company">小米科技有限责任公司 · 2024.10—2025.02 · 武汉</p>
           <h1>把智能体从想法，<br />推进到可用、可测，<br />再持续迭代。</h1>
           <p>在 AI 产品运营实践中，我覆盖需求理解、角色定位、Prompt 设计、功能测试、内容调优和用户反馈分析，并把分散问题整理成可执行的优化动作。</p>
         </div>
