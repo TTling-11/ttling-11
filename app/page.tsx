@@ -231,7 +231,7 @@ export default function Home() {
           <div className="work-video-frame">
             <video controls playsInline preload="metadata" poster="/portfolio/alttab-poster.jpg" aria-label="播放《从此不必 Alt+Tab》广告短片">
               <source src="/portfolio/alttab.mp4" type="video/mp4" />
-              你的浏览器暂不支持视频播放。
+              你的浏览器暂不支持视频播放，可<a href="/portfolio/alttab.mp4">下载视频</a>观看。
             </video>
           </div>
           <div className="featured-work-copy">
@@ -251,7 +251,7 @@ export default function Home() {
             <div className="work-video-frame">
               <video controls playsInline preload="metadata" poster="/portfolio/sanfu-transform-poster.jpg" aria-label="播放《紧急变身？去三福！》广告短片">
                 <source src="/portfolio/sanfu-transform.mp4" type="video/mp4" />
-                你的浏览器暂不支持视频播放。
+                你的浏览器暂不支持视频播放，可<a href="/portfolio/sanfu-transform.mp4">下载视频</a>观看。
               </video>
             </div>
             <div className="work-card-copy">
@@ -266,7 +266,7 @@ export default function Home() {
             <div className="work-video-frame">
               <video controls playsInline preload="metadata" poster="/portfolio/sanfu-bag-poster.jpg" aria-label="播放《这样一袋，装下万千可能》广告短片">
                 <source src="/portfolio/sanfu-bag.mp4" type="video/mp4" />
-                你的浏览器暂不支持视频播放。
+                你的浏览器暂不支持视频播放，可<a href="/portfolio/sanfu-bag.mp4">下载视频</a>观看。
               </video>
             </div>
             <div className="work-card-copy">
