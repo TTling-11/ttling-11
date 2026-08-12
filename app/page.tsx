@@ -369,38 +369,32 @@ export default function Home() {
         </div>
 
         <div className="work-orbit-shell">
-          <div className="work-orbit-label"><span>03</span><p>支影像作品<br /><b>点击箭头，旋转观看</b></p></div>
+          <div className="work-orbit-label"><span>03</span><p>支影像作品<br /><b>沿轨道旋转，点击聚焦</b></p></div>
           <div className="work-ring-viewport">
             <div className="work-ring" style={{ "--work-rotation": `${workIndex * -120}deg` } as CSSProperties}>
               {featuredWorks.map((work, index) => (
                 <article
                   className={`work-ring-panel ${index === workIndex ? "is-active" : ""}`}
-                  style={{ "--work-angle": `${index * 120}deg` } as CSSProperties}
-                  aria-hidden={index !== workIndex}
+                  style={{ "--work-angle": `${index * 120}deg`, "--work-counter-angle": `${index * -120}deg` } as CSSProperties}
                   key={work.title}
                 >
-                  <div className="work-ring-media">
-                    {index === workIndex ? (
-                      <video controls playsInline preload="metadata" poster={work.poster} aria-label={`播放${work.title}广告短片`}>
-                        <source src={work.src} type="video/mp4" />
-                        你的浏览器暂不支持视频播放，可<a href={work.src}>下载视频</a>观看。
-                      </video>
-                    ) : (
-                      <img src={work.poster} alt="" />
-                    )}
+                  <button type="button" onClick={() => setWorkIndex(index)} aria-label={`聚焦${work.title}`} aria-pressed={index === workIndex}>
+                    <img src={work.poster} alt="" />
                     <span>{String(index + 1).padStart(2, "0")}</span>
-                  </div>
-                  <div className="work-ring-copy">
-                    <div className="work-topline"><span>{work.eyebrow}</span><span>{work.duration}</span></div>
-                    <h3>{work.title}</h3>
-                    <p>{work.description}</p>
-                    <strong>{work.insight}</strong>
-                    <div className="work-tags">{work.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  </div>
+                    <strong>{work.title}</strong>
+                  </button>
                 </article>
               ))}
             </div>
+            <div className="work-orbit-core">
+              <span>NOW PLAYING</span>
+              <video key={featuredWorks[workIndex].src} controls playsInline preload="metadata" poster={featuredWorks[workIndex].poster} aria-label={`播放${featuredWorks[workIndex].title}广告短片`}>
+                <source src={featuredWorks[workIndex].src} type="video/mp4" />
+                你的浏览器暂不支持视频播放，可<a href={featuredWorks[workIndex].src}>下载视频</a>观看。
+              </video>
+            </div>
           </div>
+          <div className="work-orbit-focus"><div><span>{featuredWorks[workIndex].eyebrow} · {featuredWorks[workIndex].duration}</span><h3>{featuredWorks[workIndex].title}</h3><p>{featuredWorks[workIndex].description}</p></div><strong>{featuredWorks[workIndex].insight}</strong></div>
           <div className="work-orbit-controls" aria-label="切换视频作品">
             <button type="button" onClick={() => setWorkIndex((workIndex + featuredWorks.length - 1) % featuredWorks.length)} aria-label="上一个作品">←</button>
             <div>{featuredWorks.map((work, index) => <button type="button" className={index === workIndex ? "is-active" : ""} onClick={() => setWorkIndex(index)} aria-label={`查看${work.title}`} aria-pressed={index === workIndex} key={work.title} />)}</div>
@@ -532,36 +526,29 @@ export default function Home() {
         <div className="football-heading">
           <div>
             <p className="section-label">05 / BEYOND WORK</p>
-            <h2>另一种工作流，<br />发生在球场上。</h2>
+            <h2>我的 7 号<br />球员档案。</h2>
           </div>
           <div className="football-intro">
             <span>WUHAN UNIVERSITY WOMEN&apos;S FOOTBALL TEAM · NO. 7</span>
-            <p>
-              我是武汉大学女子足球队队员。长期训练和比赛让我习惯在高压中快速判断、
-              与队友保持沟通，并为共同目标持续投入。
-            </p>
+            <p>训练和比赛，是我理解沟通、判断和共同目标的另一种方式。</p>
           </div>
         </div>
 
-        <div className="football-playbook">
-          <div className="football-spotlight">
+        <div className="football-capsule">
+          <div className="football-player-card">
             <div className="football-photo-stack">
               {footballMoments.map((moment, index) => (
                 <figure className={index === footballIndex ? "is-active" : ""} aria-hidden={index !== footballIndex} key={moment.label}>
                   <img src={moment.image} alt={`谭美玲在足球比赛中${moment.label}`} />
-                  <figcaption><span>MOMENT {String(index + 1).padStart(2, "0")}</span><strong>{moment.label}</strong><p>{moment.note}</p></figcaption>
+                  <figcaption><span>WHU W.F.C. · NO. 7</span><strong>{moment.label}</strong></figcaption>
                 </figure>
               ))}
             </div>
-            <div className="football-switcher" aria-label="切换球场照片">
-              <button type="button" onClick={() => setFootballIndex((footballIndex + footballMoments.length - 1) % footballMoments.length)} aria-label="上一张球场照片">←</button>
-              <span>{String(footballIndex + 1).padStart(2, "0")} / 03</span>
-              <button type="button" onClick={() => setFootballIndex((footballIndex + 1) % footballMoments.length)} aria-label="下一张球场照片">→</button>
-            </div>
           </div>
 
-          <aside className="football-tactics" aria-label="足球带给我的能力">
-            <div className="pitch-board" aria-hidden="true">
+          <aside className="football-notebook" aria-label="足球带给我的能力">
+            <div className="football-scoreline"><span>PLAYER CARD</span><strong>07</strong><b>FORWARD / TEAM PLAYER</b></div>
+            <div className="football-mini-pitch" aria-hidden="true">
               <span className="pitch-circle" />
               <span className="pitch-line pitch-line-one" />
               <span className="pitch-line pitch-line-two" />
@@ -569,20 +556,19 @@ export default function Home() {
               <span className="pitch-player pitch-player-one" />
               <span className="pitch-player pitch-player-two" />
               <span className="pitch-ball">⚽</span>
-              <b>READ THE FIELD</b>
             </div>
-            <div className="football-principles">
-              <article><span>01 · TEAMWORK</span><h3>先看队友，再决定自己的动作。</h3></article>
-              <article><span>02 · RESILIENCE</span><h3>比分落后，也保持节奏与执行。</h3></article>
-              <article><span>03 · DECISION</span><h3>变化发生时，迅速做出清晰选择。</h3></article>
+            <div className="football-traits">
+              <article><span>👀</span><div><b>场上观察</b><p>先看空间，再做选择。</p></div></article>
+              <article><span>🤝</span><div><b>团队配合</b><p>相信协作胜过单打独斗。</p></div></article>
+              <article><span>⚡</span><div><b>快速判断</b><p>变化发生时保持清晰。</p></div></article>
             </div>
           </aside>
         </div>
 
-        <div className="football-filmstrip" aria-label="选择球场片段">
+        <div className="football-tabs" aria-label="选择球场片段">
           {footballMoments.map((moment, index) => (
             <button type="button" className={index === footballIndex ? "is-active" : ""} onClick={() => setFootballIndex(index)} aria-pressed={index === footballIndex} key={moment.label}>
-              <img src={moment.image} alt="" /><span>{String(index + 1).padStart(2, "0")}</span><strong>{moment.label}</strong>
+              <img src={moment.image} alt="" /><span>{String(index + 1).padStart(2, "0")}</span><strong>{moment.label}</strong><em>{moment.note}</em>
             </button>
           ))}
         </div>
