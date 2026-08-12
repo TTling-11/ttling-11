@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const metrics = [
   { value: "11", label: "独立搭建 AI 智能体", detail: "从定位到上线" },
   { value: "4", label: "已上线智能体优化", detail: "基于反馈迭代" },
@@ -120,11 +124,65 @@ const awards = [
 ];
 
 export default function Home() {
+  const [introOpen, setIntroOpen] = useState(true);
+
+  useEffect(() => {
+    const hasSeenIntro = window.sessionStorage.getItem("tm-portfolio-intro") === "seen";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (hasSeenIntro || prefersReducedMotion) setIntroOpen(false);
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIntroOpen(false);
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  const enterPortfolio = () => {
+    window.sessionStorage.setItem("tm-portfolio-intro", "seen");
+    setIntroOpen(false);
+  };
+
   return (
     <main id="top">
+      {introOpen && (
+        <section className="intro-gate" aria-label="谭美玲个人作品集开场">
+          <p className="intro-word" aria-hidden="true">welcome</p>
+          <button className="intro-stage" type="button" onClick={enterPortfolio} aria-label="进入谭美玲的个人主页">
+            <span className="intro-card intro-card-one">
+              <img src="/portfolio/projects/data-news.jpg" alt="" />
+              <i>DATA STORY</i>
+            </span>
+            <span className="intro-card intro-card-two">
+              <img src="/lifestyle-portrait.jpg" alt="" />
+              <i>ABOUT ME</i>
+            </span>
+            <span className="intro-card intro-card-three">
+              <img src="/portfolio/alttab-poster.jpg" alt="" />
+              <i>AI PRODUCT</i>
+            </span>
+            <span className="intro-card intro-card-four">
+              <img src="/football/football-dribble.jpg" alt="" />
+              <i>FOOTBALL</i>
+            </span>
+            <span className="intro-folder">
+              <span className="intro-folder-tab">PORTFOLIO · 2026</span>
+              <span className="intro-sticker intro-sticker-one">🌻</span>
+              <span className="intro-sticker intro-sticker-two">GOOD<br />IDEA!</span>
+              <strong>谭美玲</strong>
+              <small>让 AI 产品更好用，也更易被看见。</small>
+              <span className="intro-enter">点击展开 <b>↗</b></span>
+            </span>
+          </button>
+          <p className="intro-hint">CLICK TO OPEN · 按 ESC 跳过</p>
+        </section>
+      )}
+
       <nav className="site-nav" aria-label="主导航">
         <a className="brand" href="#top">
-          <span className="brand-mark">TM</span>
+          <span className="brand-mark" aria-hidden="true">🌻</span>
           <span className="brand-name">谭美玲</span>
         </a>
         <div className="nav-menu">
@@ -132,7 +190,7 @@ export default function Home() {
           <a href="#experience">代表经历</a>
           <a href="#background">教育与荣誉</a>
           <a href="#portfolio">代表作品</a>
-          <a href="#football">足球</a>
+          <a href="#football">兴趣爱好</a>
         </div>
         <a className="nav-cta" href="mailto:15549242057@163.com">
           联系我 <span aria-hidden="true">↗</span>
@@ -144,10 +202,10 @@ export default function Home() {
           <div className="availability">
             <span className="status-dot" /> 求职方向：AI 产品运营 · 产品运营 · 内容增长
           </div>
-          <p className="hero-identity">谭美玲 <span>TAN MEILING</span></p>
+          <p className="hero-identity"><strong>谭美玲</strong> <span>TAN MEILING</span></p>
           <h1>让 AI 产品<br /><em>更好用，也更易被看见。</em></h1>
           <p className="hero-summary">
-            武汉大学广告与媒介经济专业硕士研究生，具备 AI 智能体运营与财经内容生产经验。
+            武汉大学广告与媒介经济专业硕士研究生，具备 AI 智能体运营与内容生产经验。
             擅长从用户需求出发，把洞察转化为可落地的产品内容和持续迭代方案。
           </p>
           <div className="hero-buttons">
@@ -167,7 +225,7 @@ export default function Home() {
           <div className="profile-details">
             <div><span>教育背景</span><strong>武汉大学 · 硕士</strong></div>
             <div><span>研究方向</span><strong>数字营销 / 内容传播</strong></div>
-            <div><span>意向城市</span><strong>北京</strong></div>
+            <div><span>意向城市</span><strong>武汉 / 北京</strong></div>
             <div><span>英语能力</span><strong>IELTS 7.0</strong></div>
           </div>
         </aside>
