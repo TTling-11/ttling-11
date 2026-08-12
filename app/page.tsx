@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type PointerEvent as ReactPointerEvent } from "react";
 
 const metrics = [
   { value: "11", label: "独立搭建 AI 智能体", detail: "从定位到上线" },
@@ -125,6 +125,7 @@ const awards = [
 
 export default function Home() {
   const [introOpen, setIntroOpen] = useState(true);
+  const [introExpanded, setIntroExpanded] = useState(false);
 
   useEffect(() => {
     const hasSeenIntro = window.sessionStorage.getItem("tm-portfolio-intro") === "seen";
@@ -145,12 +146,34 @@ export default function Home() {
     setIntroOpen(false);
   };
 
+  const followPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+    const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+    event.currentTarget.style.setProperty("--eye-x", `${x * 5}px`);
+    event.currentTarget.style.setProperty("--eye-y", `${y * 4}px`);
+    event.currentTarget.style.setProperty("--tilt-x", `${y * -2.5}deg`);
+    event.currentTarget.style.setProperty("--tilt-y", `${x * 3.5}deg`);
+  };
+
+  const handleFolderClick = () => {
+    if (window.matchMedia("(hover: hover)").matches || introExpanded) {
+      enterPortfolio();
+    } else {
+      setIntroExpanded(true);
+    }
+  };
+
   return (
     <main id="top">
       {introOpen && (
         <section className="intro-gate" aria-label="谭美玲个人作品集开场">
-          <p className="intro-word" aria-hidden="true">welcome</p>
-          <button className="intro-stage" type="button" onClick={enterPortfolio} aria-label="进入谭美玲的个人主页">
+          <p className="intro-glass-word" aria-hidden="true">welcome</p>
+          <div
+            className={`intro-stage ${introExpanded ? "is-expanded" : ""}`}
+            onPointerMove={followPointer}
+            onPointerLeave={() => setIntroExpanded(false)}
+          >
             <span className="intro-card intro-card-one">
               <img src="/portfolio/projects/data-news.jpg" alt="" />
               <i>DATA STORY</i>
@@ -167,22 +190,36 @@ export default function Home() {
               <img src="/football/football-dribble.jpg" alt="" />
               <i>FOOTBALL</i>
             </span>
-            <span className="intro-folder">
+            <span className="intro-mini-sticker intro-mini-star" aria-hidden="true">✦</span>
+            <span className="intro-mini-sticker intro-mini-code" aria-hidden="true">AI / 07</span>
+            <button
+              className="intro-folder"
+              type="button"
+              onPointerEnter={() => setIntroExpanded(true)}
+              onFocus={() => setIntroExpanded(true)}
+              onClick={handleFolderClick}
+              aria-label="悬停展开作品卡片，点击进入谭美玲的个人主页"
+            >
               <span className="intro-folder-tab">PORTFOLIO · 2026</span>
-              <span className="intro-sticker intro-sticker-one">🌻</span>
-              <span className="intro-sticker intro-sticker-two">GOOD<br />IDEA!</span>
+              <span className="intro-sticker intro-avatar-sticker">
+                <img src="/avatar-emoji.png" alt="" />
+              </span>
+              <span className="intro-sticker intro-eyes-sticker" aria-hidden="true">
+                <span className="intro-eye"><i /></span>
+                <span className="intro-eye"><i /></span>
+              </span>
               <strong>谭美玲</strong>
               <small>让 AI 产品更好用，也更易被看见。</small>
-              <span className="intro-enter">点击展开 <b>↗</b></span>
-            </span>
-          </button>
-          <p className="intro-hint">CLICK TO OPEN · 按 ESC 跳过</p>
+              <span className="intro-enter"><span>HOVER TO EXPLORE</span><b>↗</b></span>
+            </button>
+          </div>
+          <p className="intro-hint">悬停文件夹展开 · 点击进入 · 按 ESC 跳过</p>
         </section>
       )}
 
       <nav className="site-nav" aria-label="主导航">
         <a className="brand" href="#top">
-          <span className="brand-mark" aria-hidden="true">🌻</span>
+          <span className="brand-mark" aria-hidden="true"><img src="/avatar-emoji.png" alt="" /></span>
           <span className="brand-name">谭美玲</span>
         </a>
         <div className="nav-menu">
