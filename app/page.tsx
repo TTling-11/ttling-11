@@ -191,12 +191,6 @@ export default function Home() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
 
-  useEffect(() => {
-    document.querySelectorAll<HTMLVideoElement>(".work-ring-panel video").forEach((video, index) => {
-      if (index !== workIndex) video.pause();
-    });
-  }, [workIndex]);
-
   const enterPortfolio = () => {
     setIntroOpen(false);
   };
