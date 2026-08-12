@@ -40,36 +40,54 @@ const strengths = [
   },
 ];
 
-const featuredWorks = [
+const portfolioTracks = [
   {
-    eyebrow: "PRODUCT VIDEO",
-    duration: "00:29",
-    title: "《从此不必 Alt+Tab》",
-    description: "从多任务切换的真实痛点切入，用高密度视觉叙事展现一站式内容创作体验。",
-    insight: "把复杂流程，讲成一个直观瞬间。",
-    tags: ["产品洞察", "视觉叙事", "视频创意"],
+    index: "01",
+    category: "产品影像",
+    title: "把功能讲成体验",
+    description: "聚焦产品场景、用户痛点与视觉叙事，让抽象功能更直观地被理解。",
+    count: "01 项",
     poster: "/portfolio/alttab-poster.jpg",
-    src: "/portfolio/alttab.mp4",
   },
   {
-    eyebrow: "BRAND VIDEO",
-    duration: "00:30",
-    title: "《紧急变身？去三福！》",
-    description: "以年轻人的临时造型需求为情境，用快速变装强化三福“一站式解决”的品牌印象。",
-    insight: "用一个明确场景，让卖点自然发生。",
-    tags: ["品牌广告", "场景创意", "节奏剪辑"],
-    poster: "/portfolio/sanfu-transform-poster.jpg",
-    src: "/portfolio/sanfu-transform.mp4",
+    index: "02",
+    category: "广告创意",
+    title: "让品牌故事发生",
+    description: "从年轻人的生活场景出发，完成创意策划、视频表达与品牌视觉探索。",
+    count: "03 项",
+    poster: "/portfolio/projects/ad-designer.jpg",
   },
   {
-    eyebrow: "BRAND STORY",
-    duration: "00:30",
-    title: "《这样一袋，装下万千可能》",
-    description: "让购物袋连接商品、生活方式与友谊，把品牌选择转化为年轻人的生活可能。",
-    insight: "让普通物件，成为故事的线索。",
-    tags: ["品牌故事", "情感表达", "生活方式"],
-    poster: "/portfolio/sanfu-bag-poster.jpg",
-    src: "/portfolio/sanfu-bag.mp4",
+    index: "03",
+    category: "数据新闻",
+    title: "让复杂议题可感知",
+    description: "把数据、长页交互与视觉组织成清晰叙事，降低信息理解门槛。",
+    count: "01 项",
+    poster: "/portfolio/projects/data-news.jpg",
+  },
+  {
+    index: "04",
+    category: "人物专访",
+    title: "为人物留下叙事空间",
+    description: "通过提问、内容策划和影像包装，在细节里呈现人物的温度与选择。",
+    count: "02 项",
+    poster: "/portfolio/projects/teacher-interview.jpg",
+  },
+  {
+    index: "05",
+    category: "体育传播",
+    title: "捕捉现场的节奏感",
+    description: "覆盖校园赛事的影像记录、新闻采写与内容审核，平衡速度与准确。",
+    count: "02 项",
+    poster: "/portfolio/projects/sports-video.jpg",
+  },
+  {
+    index: "06",
+    category: "媒体编辑",
+    title: "把专业内容讲清楚",
+    description: "在报刊版面、人物访谈与短视频中，让专业信息有更清晰的表达路径。",
+    count: "02 项",
+    poster: "/portfolio/projects/health-newspaper.jpg",
   },
 ];
 
@@ -369,36 +387,34 @@ export default function Home() {
         </div>
 
         <div className="work-orbit-shell">
-          <div className="work-orbit-label"><span>03</span><p>支影像作品<br /><b>沿轨道旋转，点击聚焦</b></p></div>
+          <div className="work-orbit-label"><span>06</span><p>个作品类别<br /><b>沿轨道浏览，点击聚焦</b></p></div>
           <div className="work-ring-viewport">
-            <div className="work-ring" style={{ "--work-rotation": `${workIndex * -120}deg` } as CSSProperties}>
-              {featuredWorks.map((work, index) => (
+            <div className="work-ring work-category-ring" style={{ "--work-rotation": `${workIndex * -60}deg` } as CSSProperties}>
+              {portfolioTracks.map((track, index) => (
                 <article
                   className={`work-ring-panel ${index === workIndex ? "is-active" : ""}`}
-                  style={{ "--work-angle": `${index * 120}deg`, "--work-counter-angle": `${index * -120}deg` } as CSSProperties}
-                  key={work.title}
+                  style={{ "--work-angle": `${index * 60}deg`, "--work-counter-angle": `${index * -60}deg` } as CSSProperties}
+                  key={track.category}
                 >
-                  <button type="button" onClick={() => setWorkIndex(index)} aria-label={`聚焦${work.title}`} aria-pressed={index === workIndex}>
-                    <img src={work.poster} alt="" />
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{work.title}</strong>
+                  <button type="button" onClick={() => setWorkIndex(index)} aria-label={`聚焦${track.category}作品`} aria-pressed={index === workIndex}>
+                    <img src={track.poster} alt="" />
+                    <span>{track.index}</span>
+                    <strong>{track.category}</strong>
                   </button>
                 </article>
               ))}
             </div>
-            <div className="work-orbit-core">
-              <span>NOW PLAYING</span>
-              <video key={featuredWorks[workIndex].src} controls playsInline preload="metadata" poster={featuredWorks[workIndex].poster} aria-label={`播放${featuredWorks[workIndex].title}广告短片`}>
-                <source src={featuredWorks[workIndex].src} type="video/mp4" />
-                你的浏览器暂不支持视频播放，可<a href={featuredWorks[workIndex].src}>下载视频</a>观看。
-              </video>
+            <div className="work-orbit-core work-category-core">
+              <span>PORTFOLIO CATEGORY</span>
+              <img src={portfolioTracks[workIndex].poster} alt={`${portfolioTracks[workIndex].category}作品预览`} />
+              <b>{portfolioTracks[workIndex].count}</b>
             </div>
           </div>
-          <div className="work-orbit-focus"><div><span>{featuredWorks[workIndex].eyebrow} · {featuredWorks[workIndex].duration}</span><h3>{featuredWorks[workIndex].title}</h3><p>{featuredWorks[workIndex].description}</p></div><strong>{featuredWorks[workIndex].insight}</strong></div>
-          <div className="work-orbit-controls" aria-label="切换视频作品">
-            <button type="button" onClick={() => setWorkIndex((workIndex + featuredWorks.length - 1) % featuredWorks.length)} aria-label="上一个作品">←</button>
-            <div>{featuredWorks.map((work, index) => <button type="button" className={index === workIndex ? "is-active" : ""} onClick={() => setWorkIndex(index)} aria-label={`查看${work.title}`} aria-pressed={index === workIndex} key={work.title} />)}</div>
-            <button type="button" onClick={() => setWorkIndex((workIndex + 1) % featuredWorks.length)} aria-label="下一个作品">→</button>
+          <div className="work-orbit-focus"><div><span>{portfolioTracks[workIndex].category} · {portfolioTracks[workIndex].count}</span><h3>{portfolioTracks[workIndex].title}</h3><p>{portfolioTracks[workIndex].description}</p></div><strong>后续上传的新作品会按类别归入这条轨道。</strong></div>
+          <div className="work-orbit-controls" aria-label="切换作品类别">
+            <button type="button" onClick={() => setWorkIndex((workIndex + portfolioTracks.length - 1) % portfolioTracks.length)} aria-label="上一个作品类别">←</button>
+            <div>{portfolioTracks.map((track, index) => <button type="button" className={index === workIndex ? "is-active" : ""} onClick={() => setWorkIndex(index)} aria-label={`查看${track.category}`} aria-pressed={index === workIndex} key={track.category} />)}</div>
+            <button type="button" onClick={() => setWorkIndex((workIndex + 1) % portfolioTracks.length)} aria-label="下一个作品类别">→</button>
           </div>
         </div>
 
@@ -526,7 +542,7 @@ export default function Home() {
         <div className="football-heading">
           <div>
             <p className="section-label">05 / BEYOND WORK</p>
-            <h2>我的 7 号<br />球员档案。</h2>
+            <h2>我的 7 号<br />球员档案</h2>
           </div>
           <div className="football-intro">
             <span>WUHAN UNIVERSITY WOMEN&apos;S FOOTBALL TEAM · NO. 7</span>
@@ -575,17 +591,20 @@ export default function Home() {
       </section>
 
       <footer className="contact-section">
-        <div className="contact-copy">
-          <p className="section-label">06 / CONTACT</p>
-          <h2>如果你正在寻找兼具<br /><em>产品思维与内容能力</em>的伙伴，</h2>
-          <p>很期待与你聊聊 AI 产品、用户体验与增长。</p>
+        <div className="contact-stage">
+          <div className="contact-float contact-float-one">✦</div><div className="contact-float contact-float-two">💌</div><div className="contact-float contact-float-three">07</div>
+          <p className="section-label">06 / LET&apos;S CONNECT</p>
+          <p className="contact-kicker">THE NEXT GOOD STORY STARTS HERE</p>
+          <h2>下一段有趣的合作<br /><em>要不要一起开始？</em></h2>
+          <p>欢迎和我聊产品、内容、增长，或者一场值得被讲好的故事。</p>
+          <a className="email-card" href="mailto:15549242057@163.com">
+            <span>DROP ME A LINE</span>
+            <strong>15549242057@163.com</strong>
+            <i>↗</i>
+          </a>
+          <div className="contact-stickers" aria-hidden="true"><span>PRODUCT × CONTENT</span><span>WUHAN / BEIJING</span><span>READY TO CONNECT</span></div>
         </div>
-        <a className="email-card" href="mailto:15549242057@163.com">
-          <span>EMAIL ME</span>
-          <strong>15549242057@163.com</strong>
-          <i>↗</i>
-        </a>
-        <div className="footer-bottom"><span>© 2026 谭美玲</span><span>武汉大学 · AI PRODUCT OPERATIONS</span><a href="#top">回到顶部 ↑</a></div>
+        <div className="footer-bottom"><span>© 2026 谭美玲</span><span>武汉大学 · 产品运营与内容增长</span><a href="#top">回到顶部 ↑</a></div>
       </footer>
     </main>
   );
