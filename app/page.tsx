@@ -40,6 +40,45 @@ const strengths = [
   },
 ];
 
+const featuredWorks = [
+  {
+    eyebrow: "PRODUCT VIDEO",
+    duration: "00:29",
+    title: "《从此不必 Alt+Tab》",
+    description: "从多任务切换的真实痛点切入，用高密度视觉叙事展现一站式内容创作体验。",
+    insight: "把复杂流程，讲成一个直观瞬间。",
+    tags: ["产品洞察", "视觉叙事", "视频创意"],
+    poster: "/portfolio/alttab-poster.jpg",
+    src: "/portfolio/alttab.mp4",
+  },
+  {
+    eyebrow: "BRAND VIDEO",
+    duration: "00:30",
+    title: "《紧急变身？去三福！》",
+    description: "以年轻人的临时造型需求为情境，用快速变装强化三福“一站式解决”的品牌印象。",
+    insight: "用一个明确场景，让卖点自然发生。",
+    tags: ["品牌广告", "场景创意", "节奏剪辑"],
+    poster: "/portfolio/sanfu-transform-poster.jpg",
+    src: "/portfolio/sanfu-transform.mp4",
+  },
+  {
+    eyebrow: "BRAND STORY",
+    duration: "00:30",
+    title: "《这样一袋，装下万千可能》",
+    description: "让购物袋连接商品、生活方式与友谊，把品牌选择转化为年轻人的生活可能。",
+    insight: "让普通物件，成为故事的线索。",
+    tags: ["品牌故事", "情感表达", "生活方式"],
+    poster: "/portfolio/sanfu-bag-poster.jpg",
+    src: "/portfolio/sanfu-bag.mp4",
+  },
+];
+
+const footballMoments = [
+  { image: "/football/football-dribble.jpg", label: "判断与执行", note: "带球时先观察空间，再做出动作。" },
+  { image: "/football/football-throwin.jpg", label: "专注每次配合", note: "每一次重新开球，都是新的协作起点。" },
+  { image: "/football/football-indoor.jpg", label: "保持节奏与韧性", note: "场地变化，但沟通与判断始终不变。" },
+];
+
 const portfolioArchive = [
   {
     category: "数据新闻",
@@ -140,6 +179,8 @@ const awards = [
 export default function Home() {
   const [introOpen, setIntroOpen] = useState(true);
   const [introExpanded, setIntroExpanded] = useState(false);
+  const [workIndex, setWorkIndex] = useState(0);
+  const [footballIndex, setFootballIndex] = useState(0);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -149,6 +190,12 @@ export default function Home() {
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
+
+  useEffect(() => {
+    document.querySelectorAll<HTMLVideoElement>(".work-ring-panel video").forEach((video, index) => {
+      if (index !== workIndex) video.pause();
+    });
+  }, [workIndex]);
 
   const enterPortfolio = () => {
     setIntroOpen(false);
@@ -225,7 +272,7 @@ export default function Home() {
                 <span className="intro-eye"><i /></span>
               </span>
               <strong>谭美玲</strong>
-              <small>让 AI 产品更好用，也更易被看见</small>
+              <small>把洞察变成体验，让内容抵达更远</small>
               <span className="intro-enter"><span>HOVER TO EXPLORE</span><b>↗</b></span>
             </button>
           </div>
@@ -256,7 +303,7 @@ export default function Home() {
             <span className="status-dot" /> 求职方向：AI 产品运营 · 产品运营 · 内容增长
           </div>
           <p className="hero-identity"><strong>谭美玲</strong> <span>TAN MEILING</span></p>
-          <h1><span>让 AI 产品</span><em>更好用，也更易被看见</em></h1>
+          <h1><span>把洞察变成体验</span><em>让内容抵达更远</em></h1>
           <p className="hero-summary">
             武汉大学广告与媒介经济专业硕士研究生，具备 AI 智能体运营与内容生产经验。
             擅长从用户需求出发，把洞察转化为可落地的产品内容和持续迭代方案。
@@ -327,55 +374,44 @@ export default function Home() {
           </div>
         </div>
 
-        <article className="featured-work">
-          <div className="work-video-frame">
-            <video controls playsInline preload="metadata" poster="/portfolio/alttab-poster.jpg" aria-label="播放《从此不必 Alt+Tab》广告短片">
-              <source src="/portfolio/alttab.mp4" type="video/mp4" />
-              你的浏览器暂不支持视频播放，可<a href="/portfolio/alttab.mp4">下载视频</a>观看。
-            </video>
+        <div className="work-orbit-shell">
+          <div className="work-orbit-label"><span>03</span><p>支影像作品<br /><b>点击箭头，旋转观看</b></p></div>
+          <div className="work-ring-viewport">
+            <div className="work-ring" style={{ "--work-rotation": `${workIndex * -120}deg` } as CSSProperties}>
+              {featuredWorks.map((work, index) => (
+                <article
+                  className={`work-ring-panel ${index === workIndex ? "is-active" : ""}`}
+                  style={{ "--work-angle": `${index * 120}deg` } as CSSProperties}
+                  aria-hidden={index !== workIndex}
+                  key={work.title}
+                >
+                  <div className="work-ring-media">
+                    {index === workIndex ? (
+                      <video controls playsInline preload="metadata" poster={work.poster} aria-label={`播放${work.title}广告短片`}>
+                        <source src={work.src} type="video/mp4" />
+                        你的浏览器暂不支持视频播放，可<a href={work.src}>下载视频</a>观看。
+                      </video>
+                    ) : (
+                      <img src={work.poster} alt="" />
+                    )}
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className="work-ring-copy">
+                    <div className="work-topline"><span>{work.eyebrow}</span><span>{work.duration}</span></div>
+                    <h3>{work.title}</h3>
+                    <p>{work.description}</p>
+                    <strong>{work.insight}</strong>
+                    <div className="work-tags">{work.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="featured-work-copy">
-            <div className="work-topline"><span>PRODUCT VIDEO</span><span>00:29</span></div>
-            <h3>《从此不必 Alt+Tab》</h3>
-            <p>从“多任务切换”的真实痛点切入，用高密度视觉叙事展现一站式 AI 内容创作体验。</p>
-            <div className="work-insight">
-              <span>核心表达</span>
-              <strong>让复杂的创作流程，<br />变得连贯而直观。</strong>
-            </div>
-            <div className="work-tags"><span>AI 产品</span><span>痛点洞察</span><span>视觉叙事</span></div>
+          <div className="work-orbit-controls" aria-label="切换视频作品">
+            <button type="button" onClick={() => setWorkIndex((workIndex + featuredWorks.length - 1) % featuredWorks.length)} aria-label="上一个作品">←</button>
+            <div>{featuredWorks.map((work, index) => <button type="button" className={index === workIndex ? "is-active" : ""} onClick={() => setWorkIndex(index)} aria-label={`查看${work.title}`} aria-pressed={index === workIndex} key={work.title} />)}</div>
+            <button type="button" onClick={() => setWorkIndex((workIndex + 1) % featuredWorks.length)} aria-label="下一个作品">→</button>
           </div>
-        </article>
-
-        <div className="work-grid">
-          <article className="work-card">
-            <div className="work-video-frame">
-              <video controls playsInline preload="metadata" poster="/portfolio/sanfu-transform-poster.jpg" aria-label="播放《紧急变身？去三福！》广告短片">
-                <source src="/portfolio/sanfu-transform.mp4" type="video/mp4" />
-                你的浏览器暂不支持视频播放，可<a href="/portfolio/sanfu-transform.mp4">下载视频</a>观看。
-              </video>
-            </div>
-            <div className="work-card-copy">
-              <div className="work-topline"><span>BRAND VIDEO</span><span>00:30</span></div>
-              <h3>《紧急变身？去三福！》</h3>
-              <p>以年轻人的临时造型需求为情境，用快速变装与全景镜头强化三福“一站式解决”的品牌印象。</p>
-              <div className="work-tags"><span>品牌广告</span><span>场景创意</span><span>节奏剪辑</span></div>
-            </div>
-          </article>
-
-          <article className="work-card">
-            <div className="work-video-frame">
-              <video controls playsInline preload="metadata" poster="/portfolio/sanfu-bag-poster.jpg" aria-label="播放《这样一袋，装下万千可能》广告短片">
-                <source src="/portfolio/sanfu-bag.mp4" type="video/mp4" />
-                你的浏览器暂不支持视频播放，可<a href="/portfolio/sanfu-bag.mp4">下载视频</a>观看。
-              </video>
-            </div>
-            <div className="work-card-copy">
-              <div className="work-topline"><span>BRAND STORY</span><span>00:30</span></div>
-              <h3>《这样一袋，装下万千可能》</h3>
-              <p>让购物袋成为连接商品、生活方式与友谊的叙事线索，把品牌选择转化为年轻人的生活可能。</p>
-              <div className="work-tags"><span>品牌故事</span><span>情感表达</span><span>生活方式</span></div>
-            </div>
-          </article>
         </div>
 
         <div className="archive-heading">
@@ -502,7 +538,7 @@ export default function Home() {
         <div className="football-heading">
           <div>
             <p className="section-label">05 / BEYOND WORK</p>
-            <h2>球场，是我的<br />另一间课堂。</h2>
+            <h2>另一种工作流，<br />发生在球场上。</h2>
           </div>
           <div className="football-intro">
             <span>WUHAN UNIVERSITY WOMEN&apos;S FOOTBALL TEAM · NO. 7</span>
@@ -513,25 +549,48 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="football-gallery">
-          <figure className="football-photo football-photo-main">
-            <img src="/football/football-dribble.jpg" alt="谭美玲在足球比赛中带球" />
-            <figcaption><span>01</span><strong>判断与执行</strong></figcaption>
-          </figure>
-          <figure className="football-photo">
-            <img src="/football/football-throwin.jpg" alt="谭美玲在足球比赛中掷界外球" />
-            <figcaption><span>02</span><strong>专注每一次配合</strong></figcaption>
-          </figure>
-          <figure className="football-photo">
-            <img src="/football/football-indoor.jpg" alt="谭美玲参加室内足球比赛" />
-            <figcaption><span>03</span><strong>保持节奏与韧性</strong></figcaption>
-          </figure>
+        <div className="football-playbook">
+          <div className="football-spotlight">
+            <div className="football-photo-stack">
+              {footballMoments.map((moment, index) => (
+                <figure className={index === footballIndex ? "is-active" : ""} aria-hidden={index !== footballIndex} key={moment.label}>
+                  <img src={moment.image} alt={`谭美玲在足球比赛中${moment.label}`} />
+                  <figcaption><span>MOMENT {String(index + 1).padStart(2, "0")}</span><strong>{moment.label}</strong><p>{moment.note}</p></figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="football-switcher" aria-label="切换球场照片">
+              <button type="button" onClick={() => setFootballIndex((footballIndex + footballMoments.length - 1) % footballMoments.length)} aria-label="上一张球场照片">←</button>
+              <span>{String(footballIndex + 1).padStart(2, "0")} / 03</span>
+              <button type="button" onClick={() => setFootballIndex((footballIndex + 1) % footballMoments.length)} aria-label="下一张球场照片">→</button>
+            </div>
+          </div>
+
+          <aside className="football-tactics" aria-label="足球带给我的能力">
+            <div className="pitch-board" aria-hidden="true">
+              <span className="pitch-circle" />
+              <span className="pitch-line pitch-line-one" />
+              <span className="pitch-line pitch-line-two" />
+              <span className="pitch-player pitch-player-main">07</span>
+              <span className="pitch-player pitch-player-one" />
+              <span className="pitch-player pitch-player-two" />
+              <span className="pitch-ball">⚽</span>
+              <b>READ THE FIELD</b>
+            </div>
+            <div className="football-principles">
+              <article><span>01 · TEAMWORK</span><h3>先看队友，再决定自己的动作。</h3></article>
+              <article><span>02 · RESILIENCE</span><h3>比分落后，也保持节奏与执行。</h3></article>
+              <article><span>03 · DECISION</span><h3>变化发生时，迅速做出清晰选择。</h3></article>
+            </div>
+          </aside>
         </div>
 
-        <div className="football-values">
-          <article><span>TEAMWORK</span><h3>团队协作</h3><p>先看队友的位置，再决定自己的动作。</p></article>
-          <article><span>RESILIENCE</span><h3>抗压与韧性</h3><p>比分落后时，依然保持节奏和执行。</p></article>
-          <article><span>DECISION</span><h3>快速判断</h3><p>在变化发生的瞬间，做出清晰选择。</p></article>
+        <div className="football-filmstrip" aria-label="选择球场片段">
+          {footballMoments.map((moment, index) => (
+            <button type="button" className={index === footballIndex ? "is-active" : ""} onClick={() => setFootballIndex(index)} aria-pressed={index === footballIndex} key={moment.label}>
+              <img src={moment.image} alt="" /><span>{String(index + 1).padStart(2, "0")}</span><strong>{moment.label}</strong>
+            </button>
+          ))}
         </div>
       </section>
 
