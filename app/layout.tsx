@@ -8,9 +8,9 @@ export const metadata: Metadata = {
     "codex-preview": "development",
   },
   icons: {
-    icon: "/avatar-emoji.png",
-    shortcut: "/avatar-emoji.png",
-    apple: "/avatar-emoji.png",
+    icon: "/avatar-emoji.webp",
+    shortcut: "/avatar-emoji.webp",
+    apple: "/avatar-emoji.webp",
   },
 };
 
