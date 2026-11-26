@@ -47,7 +47,7 @@ const collectionVideos = [
     title: "《长治，现在就出发！》",
     description: "国家级三等奖作品，以城市体验为线索完成一次有节奏的目的地表达。",
     duration: "00:58",
-    poster: "/portfolio-2026/changzhi.jpg",
+    poster: "/portfolio-2026/changzhi.webp",
     src: "/portfolio-2026/changzhi.mp4",
   },
   {
@@ -56,7 +56,7 @@ const collectionVideos = [
     title: "《讯飞星火 · AI 共创高效生活》",
     description: "从真实生活场景出发，呈现 AI 如何参与、连接并提升日常效率。",
     duration: "01:16",
-    poster: "/portfolio-2026/xinghuo.jpg",
+    poster: "/portfolio-2026/xinghuo.webp",
     src: "/portfolio-2026/xinghuo.mp4",
   },
   {
@@ -65,7 +65,7 @@ const collectionVideos = [
     title: "《紧急变身？去三福！》",
     description: "以临时造型需求为情境，用快速变装强化“一站式解决”的品牌印象。",
     duration: "00:30",
-    poster: "/portfolio-2026/sanfu-transform.jpg",
+    poster: "/portfolio-2026/sanfu-transform.webp",
     src: "/portfolio-2026/sanfu-transform.mp4",
   },
   {
@@ -74,7 +74,7 @@ const collectionVideos = [
     title: "《这样一袋，装下万千可能》",
     description: "让购物袋连接商品、友谊与生活方式，把普通物件变成叙事线索。",
     duration: "00:30",
-    poster: "/portfolio-2026/sanfu-bag.jpg",
+    poster: "/portfolio-2026/sanfu-bag.webp",
     src: "/portfolio-2026/sanfu-bag.mp4",
   },
   {
@@ -83,7 +83,7 @@ const collectionVideos = [
     title: "《可画：生活里的设计师》",
     description: "国家级优秀奖作品，用人物、界面与动态视觉呈现产品价值。",
     duration: "00:43",
-    poster: "/portfolio-2026/canva-designer.jpg",
+    poster: "/portfolio-2026/canva-designer.webp",
     src: "/portfolio-2026/canva-designer.mp4",
   },
   {
@@ -92,20 +92,20 @@ const collectionVideos = [
     title: "《从此不必 Alt+Tab》",
     description: "从多任务切换的真实痛点切入，用高密度视觉叙事展现一站式创作体验。",
     duration: "00:29",
-    poster: "/portfolio-2026/alt-tab.jpg",
+    poster: "/portfolio-2026/alt-tab.webp",
     src: "/portfolio-2026/alt-tab.mp4",
   },
 ];
 
 const writingWorks = [
-  { index: "07", type: "数据新闻", title: "《他乡客》", description: "以数据、视觉和长页交互组织异乡生活与身份记忆。", href: "https://readymag.website/u825704982/4423639/", icon: "✦", preview: "/portfolio-2026/writing-data.png" },
-  { index: "08", type: "体育新闻", title: "体育新闻作品", description: "聚焦赛事现场与校园体育内容的采写表达。", href: "https://mp.weixin.qq.com/s/Ed1eL2PcKtv19pGKDSQfVA", icon: "⚽", preview: "/portfolio-2026/writing-sports.png" },
+  { index: "07", type: "数据新闻", title: "《他乡客》", description: "以数据、视觉和长页交互组织异乡生活与身份记忆。", href: "https://readymag.website/u825704982/4423639/", icon: "✦", preview: "/portfolio-2026/writing-data.webp", width: 1100, height: 585 },
+  { index: "08", type: "体育新闻", title: "体育新闻作品", description: "聚焦赛事现场与校园体育内容的采写表达。", href: "https://mp.weixin.qq.com/s/Ed1eL2PcKtv19pGKDSQfVA", icon: "⚽", preview: "/portfolio-2026/writing-sports.webp", width: 900, height: 999 },
 ];
 
 const footballMoments = [
-  { image: "/football/football-dribble.jpg", label: "判断与执行", note: "带球时先观察空间，再做出动作。" },
-  { image: "/football/football-throwin.jpg", label: "专注每次配合", note: "每一次重新开球，都是新的协作起点。" },
-  { image: "/football/football-match-2026.jpg", label: "保持节奏与韧性", note: "场地变化，但沟通与判断始终不变。" },
+  { image: "/football/football-dribble.webp", width: 1000, height: 1500, label: "判断与执行", note: "带球时先观察空间，再做出动作。" },
+  { image: "/football/football-throwin.webp", width: 1000, height: 1500, label: "专注每次配合", note: "每一次重新开球，都是新的协作起点。" },
+  { image: "/football/football-match-2026.webp", width: 1280, height: 853, label: "保持节奏与韧性", note: "场地变化，但沟通与判断始终不变。" },
 ];
 
 export default function Home() {
@@ -248,7 +248,7 @@ export default function Home() {
 
         <aside className="profile-card">
           <div className="portrait-wrap">
-            <img src="/lifestyle-portrait.jpg" alt="谭美玲生活照" loading="lazy" decoding="async" />
+            <img src="/lifestyle-portrait.webp" alt="谭美玲生活照" width={900} height={1350} loading="lazy" decoding="async" />
 
           </div>
           <div className="profile-details">
@@ -317,11 +317,11 @@ export default function Home() {
             ].map(([label, description, path]) => <div className="skill-icon-item" key={label}><span className="skill-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={path} /></svg></span><div className="skill-card-content"><strong>{label}</strong><p>{description}</p></div></div>)}
           </div></div>
           <div className="vibe-projects">
-            <article className="vibe-project vibe-internship"><div className="vibe-internship-copy"><span className="vibe-project-type">校园服务</span><h4>学院实习助手</h4><p>为学院实习场景设计的线上助手</p><div className="vibe-demo-account"><span>体验账号：<strong>interview</strong></span><span>密码：<strong>interview</strong></span></div><a href="https://152.136.160.248/" target="_blank" rel="noreferrer">访问作品 ↗</a></div><a className="vibe-internship-preview" href="/portfolio-preview/internship.png" target="_blank" rel="noreferrer"><img src="/portfolio-preview/internship.png" alt="学院实习助手页面预览" loading="lazy" /></a></article>
+            <article className="vibe-project vibe-internship"><div className="vibe-internship-copy"><span className="vibe-project-type">校园服务</span><h4>学院实习助手</h4><p>为学院实习场景设计的线上助手</p><div className="vibe-demo-account"><span>体验账号：<strong>interview</strong></span><span>密码：<strong>interview</strong></span></div><a href="https://152.136.160.248/" target="_blank" rel="noreferrer">访问作品 ↗</a></div><a className="vibe-internship-preview" href="/portfolio-preview/internship.webp" target="_blank" rel="noreferrer"><img src="/portfolio-preview/internship.webp" alt="学院实习助手页面预览" width={1200} height={682} loading="lazy" decoding="async" /></a></article>
             <article className="vibe-project vibe-textbooks"><div className="vibe-project-copy"><div><span className="vibe-project-type">交互教学</span><h4>3D 辅助教材</h4><p>借助 AI 制作交互式三维模型，让知识结构更直观。</p></div><span className="vibe-project-count">04 / 教材预览</span></div><div className="vibe-preview-grid">
-              {[['plant','植物细胞'],['animal','动物细胞'],['digestion','消化和吸收'],['vessel','血管']].map(([file, title]) => <a href={`/portfolio-preview/${file}.png`} target="_blank" rel="noreferrer" key={file}><img src={`/portfolio-preview/${file}.png`} alt={`${title}教材界面预览`} loading="lazy" /><span>{title}</span></a>)}
+              {[['plant','植物细胞'],['animal','动物细胞'],['digestion','消化和吸收'],['vessel','血管']].map(([file, title]) => <a href={`/portfolio-preview/${file}.webp`} target="_blank" rel="noreferrer" key={file}><img src={`/portfolio-preview/${file}.webp`} alt={`${title}教材界面预览`} width={1200} height={750} loading="lazy" decoding="async" /><span>{title}</span></a>)}
             </div></article>
-            <article className="vibe-project vibe-proposal"><div className="vibe-proposal-copy"><span className="vibe-project-type">项目交付</span><h4>湖南大学提案平台</h4><p>围绕教代会提案流程，搭建线上服务平台。</p><a href="/portfolio-preview/proposal.png" target="_blank" rel="noreferrer">查看界面预览 ↗</a></div><a className="vibe-proposal-preview" href="/portfolio-preview/proposal.png" target="_blank" rel="noreferrer"><img src="/portfolio-preview/proposal.png" alt="湖南大学提案平台界面预览" loading="lazy" /></a></article>
+            <article className="vibe-project vibe-proposal"><div className="vibe-proposal-copy"><span className="vibe-project-type">项目交付</span><h4>湖南大学提案平台</h4><p>围绕教代会提案流程，搭建线上服务平台。</p><a href="/portfolio-preview/proposal.webp" target="_blank" rel="noreferrer">查看界面预览 ↗</a></div><a className="vibe-proposal-preview" href="/portfolio-preview/proposal.webp" target="_blank" rel="noreferrer"><img src="/portfolio-preview/proposal.webp" alt="湖南大学提案平台界面预览" width={1200} height={750} loading="lazy" decoding="async" /></a></article>
           </div>
         </section>
         <section className="portfolio-group" id="video-works"><h3>视频作品</h3>
@@ -336,7 +336,7 @@ export default function Home() {
                   key={track.category}
                 >
                   <button type="button" onClick={() => setWorkIndex(index)} aria-label={`聚焦${track.category}作品`} aria-pressed={index === workIndex}>
-                    <img src={track.poster} alt="" loading="lazy" decoding="async" />
+                    <img src={track.poster} alt="" width={960} height={540} loading="lazy" decoding="async" />
                     <span>{track.index}</span>
                     <strong>{track.category}</strong>
                   </button>
@@ -345,7 +345,7 @@ export default function Home() {
             </div>
             <button className="work-orbit-core work-category-core" type="button" onClick={() => setActiveVideo(collectionVideos[workIndex])} aria-label={`点击播放${collectionVideos[workIndex].title}`}>
 
-              <img src={collectionVideos[workIndex].poster} alt={`${collectionVideos[workIndex].title}作品预览`} decoding="async" />
+              <img src={collectionVideos[workIndex].poster} alt={`${collectionVideos[workIndex].title}作品预览`} width={960} height={540} decoding="async" />
               <b>{collectionVideos[workIndex].duration}</b>
               <span className="work-core-play"><i>▶</i><em>点击播放</em></span>
             </button>
@@ -363,7 +363,7 @@ export default function Home() {
         <div className="writing-work-grid" aria-label="文字作品">
           {writingWorks.map((work) => (
             <a className="writing-work-card" href={work.href} target="_blank" rel="noreferrer" key={work.title}>
-              <div className="writing-work-preview"><img src={work.preview} alt={`${work.title}作品预览`} loading="lazy" decoding="async" /></div>
+              <div className="writing-work-preview"><img src={work.preview} alt={`${work.title}作品预览`} width={work.width} height={work.height} loading="lazy" decoding="async" /></div>
               <div className="writing-work-copy"><div><span>{work.index} / 文字作品</span><b>{work.icon}</b></div><p>{work.type}</p><h3>{work.title}</h3><small>{work.description}</small><strong>打开作品 <i>↗</i></strong></div>
             </a>
           ))}
@@ -437,7 +437,7 @@ export default function Home() {
             <div className="football-photo-stack">
               {footballMoments.map((moment, index) => (
                 <figure className={index === footballIndex ? "is-active" : ""} aria-hidden={index !== footballIndex} key={moment.label}>
-                  <img src={moment.image} alt={`谭美玲在足球比赛中${moment.label}`} loading="lazy" decoding="async" />
+                  <img src={moment.image} alt={`谭美玲在足球比赛中${moment.label}`} width={moment.width} height={moment.height} loading="lazy" decoding="async" />
                   <figcaption><strong>{moment.label}</strong></figcaption>
                 </figure>
               ))}
