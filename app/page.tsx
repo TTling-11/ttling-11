@@ -152,7 +152,7 @@ export default function Home() {
     <main id="top">
       {introOpen && (
         <section className="intro-gate" aria-label="谭美玲个人作品集开场">
-
+          <p className="intro-glass-word" aria-hidden="true">welcome</p>
           <div className={`intro-stage ${introCardsOut ? "is-drawn" : ""}`} onPointerMove={followIntroEyes} onPointerLeave={resetIntroEyes}>
             <a className="intro-card intro-card-one" href="#strengths" onClick={enterPortfolio}>
               <span className="intro-card-art intro-art-story" aria-hidden="true">
