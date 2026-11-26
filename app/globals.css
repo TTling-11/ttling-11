@@ -251,6 +251,8 @@ main#top { display: flex; min-width: 0; flex-direction: column; }
 .vibe-project a { color: #087fa9; }
 .vibe-internship { display: grid; gap: 24px; padding: 26px; background: linear-gradient(110deg,#fff,#f4fbfe); }
 .vibe-internship-copy > a { display: inline-block; margin-top: 20px; font-size: 13px; font-weight: 800; text-decoration: none; }
+.vibe-demo-account { display: grid; gap: 5px; width: fit-content; max-width: 100%; margin-top: 17px; padding: 11px 15px; border: 1px solid #d9edf3; border-radius: 10px; color: #617b89; background: #f6fbfd; font-size: 13px; line-height: 1.55; }
+.vibe-demo-account strong { color: #244c60; font-size: inherit; font-weight: 700; letter-spacing: .01em; }
 .vibe-internship-preview { display: block; min-width: 0; overflow: hidden; border: 1px solid #d2e5eb; border-radius: 12px; box-shadow: 0 14px 28px rgba(25,69,82,.12); }
 .vibe-internship-preview img { display: block; width: 100%; height: auto; }
 .vibe-textbooks { padding: 26px; }
