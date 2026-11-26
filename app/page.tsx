@@ -3,40 +3,40 @@
 import { useEffect, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 
 const metrics = [
+  { value: "7", label: "校园场景 Skill", detail: "搭建并上架" },
+  { value: "项目", label: "科小研专家 · 提案平台", detail: "基于 Comate 搭建交付" },
   { value: "11", label: "独立搭建 AI 智能体", detail: "从定位到上线" },
-  { value: "4", label: "已上线智能体优化", detail: "基于反馈迭代" },
-  { value: "200+", label: "财经短视频", detail: "参与策划与制作" },
-  { value: "1000万+", label: "累计播放量", detail: "内容传播成果" },
+  { value: "200+", label: "财经短视频", detail: "累计播放 1000 万+" },
 ];
 
 const strengths = [
   {
     number: "01",
     icon: "🧩",
-    title: "AI 产品运营",
-    text: "经历过智能体从需求理解、定位设计、Prompt 编写到测试调优的完整流程。",
-    proof: "11 个智能体独立搭建",
+    title: "AI 产品与场景落地",
+    text: "从需求理解、定位设计到测试调优，搭建智能体与校园场景 Skill，推动 AI 能力落地。",
+    proof: "11 个智能体 · 7 个校园场景 Skill",
   },
   {
     number: "02",
     icon: "🔍",
-    title: "用户与内容洞察",
-    text: "能够从用户反馈与使用场景中识别问题，转化为内容配置和体验优化建议。",
-    proof: "4 个线上产品持续优化",
+    title: "用户洞察与项目交付",
+    text: "从用户反馈和客户业务中识别问题，推进产品优化、场景试点与实际项目交付。",
+    proof: "4 个智能体优化 · 提案平台交付",
   },
   {
     number: "03",
-    icon: "🚀",
-    title: "内容策划与增长",
-    text: "理解选题、叙事、视觉和传播链路，兼顾内容质量、发布效率与传播结果。",
-    proof: "200+ 条内容制作经验",
+    icon: "✨",
+    title: "AI 工具与实践创新",
+    text: "结合 AI 工具、Skill 和多维表开发应用，探索 AI 驱动的视频剪辑与视觉包装工作流。",
+    proof: "科小研 · 2 个课题试点",
   },
   {
     number: "04",
-    icon: "✨",
-    title: "AI 工具驱动执行",
-    text: "善于使用 Codex、TRAE 等 AI 与协作工具，辅助信息整理、原型搭建、内容生产和快速验证。",
-    proof: "把工具真正转化为交付效率",
+    icon: "🚀",
+    title: "内容策划与增长",
+    text: "参与公众号选题、视觉物料策划与财经视频制作，兼顾内容表达、生产效率与传播效果。",
+    proof: "7 期推文 · 200+ 条财经视频",
   },
 ];
 
@@ -105,18 +105,7 @@ const writingWorks = [
 const footballMoments = [
   { image: "/football/football-dribble.jpg", label: "判断与执行", note: "带球时先观察空间，再做出动作。" },
   { image: "/football/football-throwin.jpg", label: "专注每次配合", note: "每一次重新开球，都是新的协作起点。" },
-  { image: "/football/football-indoor.jpg", label: "保持节奏与韧性", note: "场地变化，但沟通与判断始终不变。" },
-];
-
-const awards = [
-  { year: "2024", title: "第十六届大学生广告艺术大赛", result: "国家级三等奖", icon: "🥉", tone: "cyan" },
-  { year: "2023", title: "第八届中国数据新闻大赛", result: "国家级三等奖", icon: "🗞️", tone: "blue" },
-  { year: "2023", title: "第十五届大学生广告艺术大赛", result: "国家级优秀奖", icon: "🎨", tone: "pink" },
-  { year: "2024", title: "第十七届中国大学生计算机设计大赛", result: "省级二等奖", icon: "🖥️", tone: "yellow" },
-  { year: "2025", title: "武汉大学优秀毕业生", result: "优秀毕业生", icon: "🎓", tone: "mint" },
-  { year: "2021—2024", title: "武汉大学新闻与传播学院奖学金", result: "连续三学年获得", icon: "📚", tone: "blue" },
-  { year: "2024", title: "武汉大学", result: "社会活动积极分子", icon: "🌱", tone: "mint" },
-  { year: "2023", title: "武汉大学新闻与传播学院", result: "优秀志愿者", icon: "🫶", tone: "pink" },
+  { image: "/football/football-match-2026.jpg", label: "保持节奏与韧性", note: "场地变化，但沟通与判断始终不变。" },
 ];
 
 export default function Home() {
@@ -163,35 +152,35 @@ export default function Home() {
     <main id="top">
       {introOpen && (
         <section className="intro-gate" aria-label="谭美玲个人作品集开场">
-          <p className="intro-glass-word" aria-hidden="true">welcome</p>
+
           <div className={`intro-stage ${introCardsOut ? "is-drawn" : ""}`} onPointerMove={followIntroEyes} onPointerLeave={resetIntroEyes}>
             <a className="intro-card intro-card-one" href="#strengths" onClick={enterPortfolio}>
               <span className="intro-card-art intro-art-story" aria-hidden="true">
-                <span className="art-spark">✦</span><span className="art-emoji">🧩</span><b>IDEA</b>
+                <span className="art-spark">✦</span><span className="art-emoji">🧩</span>
               </span>
               <i>核心能力</i>
             </a>
             <a className="intro-card intro-card-two" href="#experience" onClick={enterPortfolio}>
               <span className="intro-card-art intro-art-story" aria-hidden="true">
-                <span className="art-spark">✦</span><span className="art-emoji">📝</span><b>WORK</b>
+                <span className="art-spark">✦</span><span className="art-emoji">📝</span>
               </span>
-              <i>代表经历</i>
+              <i>实习经历</i>
             </a>
-            <a className="intro-card intro-card-three" href="#background" onClick={enterPortfolio}>
+            <a className="intro-card intro-card-three" href="#top" onClick={enterPortfolio}>
               <span className="intro-card-art intro-art-about" aria-hidden="true">
-                <span className="art-bubble">HELLO!</span><img src="/avatar-emoji.webp" alt="" />
+                <img src="/avatar-emoji.webp" alt="" />
               </span>
-              <i>教育与荣誉</i>
+              <i>个人介绍</i>
             </a>
             <a className="intro-card intro-card-four" href="#portfolio" onClick={enterPortfolio}>
               <span className="intro-card-art intro-art-ai" aria-hidden="true">
-                <span className="art-spark">✦</span><span className="art-emoji">🎞️</span><b>PLAY</b>
+                <span className="art-spark">✦</span><span className="art-emoji">🎞️</span>
               </span>
               <i>代表作品</i>
             </a>
             <a className="intro-card intro-card-five" href="#football" onClick={enterPortfolio}>
               <span className="intro-card-art intro-art-football" aria-hidden="true">
-                <span className="art-ball">⚽</span><span className="art-player">07</span><b>GO!</b>
+                <span className="art-ball">⚽</span><span className="art-player">07</span>
               </span>
               <i>兴趣爱好</i>
             </a>
@@ -203,7 +192,7 @@ export default function Home() {
                 aria-label="展开谭美玲的个人主页分类卡片"
                 aria-expanded={introCardsOut}
               />
-              <span className="intro-folder-tab">PORTFOLIO · 2026</span>
+              <span className="intro-folder-tab">个人作品集 · 2026</span>
               <span className="intro-sticker intro-avatar-sticker">
                 <img src="/avatar-emoji.webp" alt="" />
               </span>
@@ -212,13 +201,13 @@ export default function Home() {
                 <span className="intro-eye"><i /></span>
               </span>
               <strong>谭美玲</strong>
-              <small>把洞察变成体验，让内容抵达更远</small>
+              <small>洞察用户需求，打造有价值的产品</small>
               <a className="intro-enter" href="#top" onClick={enterPortfolio} aria-label="进入谭美玲个人主页">
-                <span>ENTER PORTFOLIO</span><b>↗</b>
+                <span>进入主页</span><b>↗</b>
               </a>
             </div>
           </div>
-          <p className="intro-hint">点击文件夹展开分类卡片，或点击 ENTER PORTFOLIO 直接进入首页 · 按 ESC 跳过</p>
+          <p className="intro-hint">点击文件夹展开分类卡片，或点击 进入主页 直接进入首页 · 按退出键跳过</p>
         </section>
       )}
 
@@ -229,8 +218,7 @@ export default function Home() {
         </a>
         <div className="nav-menu">
           <a href="#strengths">核心能力</a>
-          <a href="#experience">代表经历</a>
-          <a href="#background">教育与荣誉</a>
+          <a href="#experience">实习经历</a>
           <a href="#portfolio">代表作品</a>
           <a href="#football">兴趣爱好</a>
         </div>
@@ -242,16 +230,15 @@ export default function Home() {
       <header className="hero-shell">
         <div className="hero-main">
           <div className="availability">
-            <span className="status-dot" /> 求职方向：产品运营 · 内容增长
+            <span className="status-dot" /> 求职方向：产品运营
           </div>
-          <p className="hero-identity"><strong>谭美玲</strong> <span>TAN MEILING</span></p>
-          <h1><span>把洞察变成体验</span><em>让内容抵达更远</em></h1>
+          <p className="hero-identity"><strong>谭美玲</strong></p>
           <p className="hero-summary">
-            武汉大学广告与媒介经济专业硕士研究生，具备 AI 智能体运营与内容生产经验。
-            擅长从用户需求出发，把洞察转化为可落地的产品内容和持续迭代方案。
+            武汉大学广告与媒介经济专业硕士研究生，具备 AI 产品运营与内容生产经验，擅长从用户需求出发，把洞察转化为可落地的产品内容和持续迭代方案。
           </p>
+          <h1><span>洞察用户需求</span><em>打造有价值的产品</em></h1>
           <div className="hero-buttons">
-            <a className="button-primary" href="#experience">查看代表经历 <span>↓</span></a>
+            <a className="button-primary" href="#experience">查看实习经历 <span>↓</span></a>
             <a className="button-secondary" href="mailto:15549242057@163.com">发送邮件 ↗</a>
           </div>
           <div className="workflow" aria-label="工作方法">
@@ -262,12 +249,12 @@ export default function Home() {
         <aside className="profile-card">
           <div className="portrait-wrap">
             <img src="/lifestyle-portrait.jpg" alt="谭美玲生活照" loading="lazy" decoding="async" />
-            <span className="portrait-label">This is me</span>
+
           </div>
           <div className="profile-details">
-            <div><span>教育背景</span><strong>武汉大学 · 硕士</strong></div>
+            <div><span>教育背景</span><strong>武汉大学 · 本科、硕士</strong></div>
             <div><span>研究方向</span><strong>数字营销 / 内容传播</strong></div>
-            <div><span>意向城市</span><strong>武汉 / 北京</strong></div>
+            <div><span>意向城市</span><strong>深圳 / 北京</strong></div>
             <div><span>英语能力</span><strong>IELTS 7.0</strong></div>
           </div>
         </aside>
@@ -284,9 +271,9 @@ export default function Home() {
 
       <section className="section strengths-section" id="strengths">
         <div className="section-intro">
-          <p className="section-label">01 / ROLE FIT</p>
-          <h2>我能为团队<br />带来什么？</h2>
-          <p>我能把用户洞察、产品运营、内容表达与 AI 工具串成完整工作流：既能独立推进，也能依据数据和反馈持续迭代，把想法更快落成可验证的结果。</p>
+
+          <div className="numbered-heading"><span className="section-number">01</span><h2>我能为团队带来什么？</h2></div>
+          <p>我能结合 AI 产品运营、用户洞察和内容生产经验，从需求出发推动场景落地、项目交付与持续优化。</p>
         </div>
         <div className="strength-grid">
           {strengths.map((item) => (
@@ -306,17 +293,38 @@ export default function Home() {
         <div className="breath-cluster breath-cluster-portfolio" aria-hidden="true"><span>▶</span><span>✦</span><span>08</span></div>
         <div className="portfolio-heading">
           <div>
-            <p className="section-label">04 / SELECTED WORK</p>
-            <h2>不只讲经历，<br />也让作品自己说话</h2>
+
+            <div className="numbered-heading"><span className="section-number">03</span><h2>作品展示</h2></div>
           </div>
           <div className="portfolio-heading-copy">
-            <p>6 支视频和 2 篇文字作品，记录从城市传播、AI 创意到品牌与产品叙事的不同表达方式。</p>
+            <p>从产品实践到影像与文字，记录不同形式的探索和表达。</p>
             <div className="portfolio-categories" aria-label="作品类型">
-              <span>视频作品 06</span><span>文字作品 02</span>
+              <a href="#vibe-coding">Vibe Coding 作品</a><a href="#video-works">视频作品</a><a href="#writing-works">文字作品</a>
             </div>
           </div>
         </div>
 
+        <section className="portfolio-group" id="vibe-coding">
+          <h3>Vibe Coding 作品</h3>
+          <div className="vibe-skill-block"><div className="vibe-skill-heading"><div><p>场景化工具</p><h4>Skill 作品</h4></div><span>从需求到可用的解决方案</span></div><div className="skill-icon-list" aria-label="Skill 作品类型">
+            {[
+              ['职业规划','围绕职业规划大赛，辅助梳理参赛内容。','M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z'],
+              ['竞赛活动','为校园竞赛活动提供场景化支持。','M8 3h8v4a4 4 0 01-8 0V3zm-3 1H3v2a4 4 0 004 4m12-6h2v2a4 4 0 01-4 4M12 11v7m-4 3h8m-6-3h4'],
+              ['网络安全','服务校园网络安全考试相关场景。','M12 2l8 3v6c0 5-3 8-8 11-5-3-8-6-8-11V5l8-3zm-3 10l2 2 4-4'],
+              ['迎新权益','面向高校迎新权益场景提供支持。','M3 9l9-5 9 5-9 5-9-5zm3 2v5c3 3 9 3 12 0v-5m3-2v6'],
+              ['3D 教材建构','围绕教材知识点创建交互式三维辅助教材。','M12 2l8 4.5v10L12 21l-8-4.5v-10L12 2zm-8 4.5l8 5 8-5M12 11.5V21'],
+              ['网页 design','辅助网页视觉设计与界面优化。','M3 4h18v16H3V4zm0 5h18M7 6.5h.01M10 6.5h.01M8 14l-2 2 2 2m8-4l2 2-2 2m-3-5l-2 6']
+            ].map(([label, description, path]) => <div className="skill-icon-item" key={label}><span className="skill-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={path} /></svg></span><div className="skill-card-content"><strong>{label}</strong><p>{description}</p></div></div>)}
+          </div></div>
+          <div className="vibe-projects">
+            <article className="vibe-project vibe-internship"><div className="vibe-internship-copy"><span className="vibe-project-type">校园服务</span><h4>学院实习助手</h4><p>为学院实习场景设计的线上助手</p><a href="https://152.136.160.248/" target="_blank" rel="noreferrer">访问作品 ↗</a></div><a className="vibe-internship-preview" href="/portfolio-preview/internship.png" target="_blank" rel="noreferrer"><img src="/portfolio-preview/internship.png" alt="学院实习助手页面预览" loading="lazy" /></a></article>
+            <article className="vibe-project vibe-textbooks"><div className="vibe-project-copy"><div><span className="vibe-project-type">交互教学</span><h4>3D 辅助教材</h4><p>借助 AI 制作交互式三维模型，让知识结构更直观。</p></div><span className="vibe-project-count">04 / 教材预览</span></div><div className="vibe-preview-grid">
+              {[['plant','植物细胞'],['animal','动物细胞'],['digestion','消化和吸收'],['vessel','血管']].map(([file, title]) => <a href={`/portfolio-preview/${file}.png`} target="_blank" rel="noreferrer" key={file}><img src={`/portfolio-preview/${file}.png`} alt={`${title}教材界面预览`} loading="lazy" /><span>{title}</span></a>)}
+            </div></article>
+            <article className="vibe-project vibe-proposal"><div className="vibe-proposal-copy"><span className="vibe-project-type">项目交付</span><h4>湖南大学提案平台</h4><p>围绕教代会提案流程，搭建线上服务平台。</p><a href="/portfolio-preview/proposal.png" target="_blank" rel="noreferrer">查看界面预览 ↗</a></div><a className="vibe-proposal-preview" href="/portfolio-preview/proposal.png" target="_blank" rel="noreferrer"><img src="/portfolio-preview/proposal.png" alt="湖南大学提案平台界面预览" loading="lazy" /></a></article>
+          </div>
+        </section>
+        <section className="portfolio-group" id="video-works"><h3>视频作品</h3>
         <div className="work-orbit-shell">
           <div className="work-orbit-label"><span>08</span><p>件作品收录</p></div>
           <div className="work-ring-viewport">
@@ -336,7 +344,7 @@ export default function Home() {
               ))}
             </div>
             <button className="work-orbit-core work-category-core" type="button" onClick={() => setActiveVideo(collectionVideos[workIndex])} aria-label={`点击播放${collectionVideos[workIndex].title}`}>
-              <span>SELECTED VIDEO</span>
+
               <img src={collectionVideos[workIndex].poster} alt={`${collectionVideos[workIndex].title}作品预览`} decoding="async" />
               <b>{collectionVideos[workIndex].duration}</b>
               <span className="work-core-play"><i>▶</i><em>点击播放</em></span>
@@ -349,15 +357,18 @@ export default function Home() {
             <button type="button" onClick={() => setWorkIndex((workIndex + 1) % collectionVideos.length)} aria-label="下一个作品">→</button>
           </div>
         </div>
+        </section>
 
+        <section className="portfolio-group" id="writing-works"><h3>文字作品</h3>
         <div className="writing-work-grid" aria-label="文字作品">
           {writingWorks.map((work) => (
             <a className="writing-work-card" href={work.href} target="_blank" rel="noreferrer" key={work.title}>
               <div className="writing-work-preview"><img src={work.preview} alt={`${work.title}作品预览`} loading="lazy" decoding="async" /></div>
-              <div className="writing-work-copy"><div><span>{work.index} / WRITING</span><b>{work.icon}</b></div><p>{work.type}</p><h3>{work.title}</h3><small>{work.description}</small><strong>打开作品 <i>↗</i></strong></div>
+              <div className="writing-work-copy"><div><span>{work.index} / 文字作品</span><b>{work.icon}</b></div><p>{work.type}</p><h3>{work.title}</h3><small>{work.description}</small><strong>打开作品 <i>↗</i></strong></div>
             </a>
           ))}
         </div>
+        </section>
 
       </section>
 
@@ -370,7 +381,7 @@ export default function Home() {
               <source src={activeVideo.src} type="video/mp4" />
               你的浏览器暂不支持视频播放。
             </video>
-            <div className="video-dialog-bottom"><h2>{activeVideo.title}</h2><span>CLICK · WATCH · REPLAY</span></div>
+            <div className="video-dialog-bottom"><h2>{activeVideo.title}</h2></div>
           </div>
         </div>
       )}
@@ -378,24 +389,29 @@ export default function Home() {
       <section className="experience-section" id="experience">
         <div className="breath-cluster breath-cluster-experience" aria-hidden="true"><span>✦</span><span>02</span><span>↗</span></div>
         <div className="section-title-row">
-          <div><p className="section-label">02 / EXPERIENCE</p><h2>代表经历</h2></div>
-          <p>从智能体从 0 到 1 的运营闭环，到高频财经视频的策划制作；两段实习共同沉淀了产品、内容与增长的实战能力。</p>
+          <div className="numbered-heading"><span className="section-number">02</span><h2>实习经历</h2></div>
+          <p>从教育场景中的 AI 产品实践，到智能体运营和财经视频制作，持续积累产品、内容与项目交付经验。</p>
         </div>
 
         <div className="experience-overview">
+          <article className="experience-tile experience-tile-content experience-tile-kingsoft">
+            <div className="experience-tile-top"><span>01</span><b>💡</b></div>
+            <div className="experience-company"><h3>金山办公 · AI 产品运营（教育行业）</h3><span>2026.08 — 2026.11 · 武汉</span></div>
+            <p className="experience-summary">围绕高校场景开展内容运营、AI 产品实践与客户项目交付。</p>
+            <ul className="experience-points"><li>主导高校开学季内容宣发，策划并产出 7 期公众号推文及配套海报，沉淀运营 SOP 与宣发排期表</li><li>搭建并上架 7 个校园场景 Skill，覆盖职业规划大赛、竞赛活动、网络安全考试及迎新权益</li><li>开发 3D 教材生成 Skill，产出 15 节离线交互教材并投放客户；设计科研数字员工「科小研」，搭建 6 个 Skill 和 7 张多维表</li><li>交付湖南大学教代会提案平台，完成身份识别、提案匹配与提案生成 Skill 的搭建</li></ul>
+            <div className="experience-metrics"><span><strong>科小研</strong>科研数字员工</span><span><strong>提案平台</strong>客户项目交付</span><span><strong>7 个</strong>校园场景 Skill</span></div>
+          </article>
           <article className="experience-tile experience-tile-ai">
-            <div className="experience-tile-top"><span>01 / AI PRODUCT</span><b>🤖</b></div>
-            <div className="experience-company"><p>小米科技有限责任公司</p><span>2024.10 — 2025.02 · 武汉</span></div>
-            <h3>AI 产品运营</h3>
+            <div className="experience-tile-top"><span>02</span><b>🤖</b></div>
+            <div className="experience-company"><h3>小米科技有限责任公司 · AI 产品运营</h3><span>2024.10 — 2025.02 · 武汉</span></div>
             <p className="experience-summary">围绕用户需求完成智能体从定位到上线后的持续迭代。</p>
             <ul className="experience-points"><li>独立搭建 11 个智能体应用，优化 4 个已上线智能体</li><li>完成定位、Prompt 设计、功能测试与内容调优</li><li>参与竞品调研与运营策略分析，输出迭代建议</li><li>归纳用户反馈并优化内容配置，推动体验提升</li></ul>
             <div className="experience-metrics"><span><strong>11</strong>独立搭建</span><span><strong>4</strong>线上优化</span><span><strong>全流程</strong>定位至迭代</span></div>
           </article>
 
           <article className="experience-tile experience-tile-content">
-            <div className="experience-tile-top"><span>02 / CONTENT GROWTH</span><b>🎬</b></div>
-            <div className="experience-company"><p>新华社中国证券报</p><span>2024.02 — 2024.06 · 北京</span></div>
-            <h3>视频策划与后期制作</h3>
+            <div className="experience-tile-top"><span>03</span><b>🎬</b></div>
+            <div className="experience-company"><h3>新华社中国证券报 · 视频策划与后期制作</h3><span>2024.02 — 2024.06 · 北京</span></div>
             <p className="experience-summary">参与财经栏目、人物专访与高频短视频生产，兼顾专业表达与传播效率。</p>
             <ul className="experience-points"><li>参与《两会面对面》《两会新观察》等重点栏目制作</li><li>累计制作财经新闻短视频 200+ 条、上市公司董事长专访 5 条</li><li>熟悉财经选题表达、短视频传播逻辑与媒体生产流程</li><li>覆盖选题包装、素材整理、字幕校对与后期优化</li></ul>
             <div className="experience-metrics"><span><strong>200+</strong>短视频</span><span><strong>5</strong>人物专访</span><span><strong>1000万+</strong>总播放量</span></div>
@@ -403,61 +419,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="background-section" id="background">
-        <div className="breath-cluster breath-cluster-learning" aria-hidden="true"><span>WHU</span><span>✦</span><span>◎</span></div>
-        <div className="education-heading">
-          <div><p className="section-label">03 / LEARNING PATH</p><h2>我的学习坐标</h2></div>
-          <p>从内容创作与影像叙事出发，进一步走向品牌传播、数字营销与 AI 产品运营。</p>
-        </div>
-
-        <div className="learning-atlas" aria-label="从本科到硕士的学习轨迹">
-          <div className="learning-atlas-route" aria-hidden="true"><span>CONTENT</span><i>✦</i><b>PRODUCT</b></div>
-          <article className="learning-stop learning-stop-bachelor">
-            <div className="learning-stop-index"><span>01</span><i>🎥</i></div>
-            <div className="learning-stop-copy"><p>2021.09 — 2025.06</p><strong>本科 · 广播电视学</strong><h3>武汉大学</h3><span>从内容创作与影像叙事出发</span><div><i>内容创作</i><i>影像叙事</i><i>优秀毕业生</i></div></div>
-          </article>
-          <article className="learning-stop learning-stop-master">
-            <div className="learning-stop-index"><span>02</span><i>🎓</i></div>
-            <div className="learning-stop-copy"><p>2025.09 — 至今</p><strong>硕士研究生 · 广告与媒介经济</strong><h3>武汉大学</h3><span>走向品牌传播、数字营销与 AI 产品内容</span><div><i>数字营销</i><i>品牌传播</i><i>AI 产品</i></div></div>
-          </article>
-        </div>
-
-        <div className="awards-showcase">
-          <div className="awards-showcase-heading"><span aria-hidden="true">🏆</span><div><p className="section-label">HONORS EXHIBITION</p><h2>荣誉画廊</h2><p>从专业竞赛到校园荣誉，完整记录每一次投入得到的回应。</p></div></div>
-          <div className="honors-gallery" aria-label="荣誉奖项画廊">
-            {awards.map((award, index) => (
-              <article className={`honor-frame honor-${award.tone}`} style={{ "--frame-order": index } as CSSProperties} key={`${award.year}-${award.title}`}>
-                <div className="honor-art"><span>{award.icon}</span><i>{String(index + 1).padStart(2, "0")}</i></div>
-                <div className="honor-caption"><span>{award.year}</span><h3>{award.title}</h3><p>{award.result}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="campus-stage">
-          <div className="campus-stage-heading"><div><p className="section-label">CAMPUS ROLES</p><h2>我的校园角色</h2></div><p>不只参与活动，也负责把人、内容和流程组织起来。</p></div>
-          <div className="campus-role-grid">
-            <article className="campus-role campus-role-media">
-              <div className="campus-role-art" aria-hidden="true"><div className="campus-character campus-character-report"><img src="/campus-character-reporter.png" alt="" /><span className="campus-action-badge">🎙️</span><span className="campus-character-tag tag-one">采访现场</span><span className="campus-character-tag tag-two">内容审核</span></div><span className="campus-role-label">记者团</span><i>📹</i></div>
-              <div className="campus-role-copy"><span>2022.06 — 2024.01</span><p>ROLE 01 · 内容统筹</p><h3>体育部宣传中心<br />学生记者团</h3><strong>主要负责人</strong><p>组织和指导记者团工作，参与大型赛事新闻、系列短视频的制作与审核。</p><div><i>团队协作</i><i>内容审核</i><i>赛事传播</i></div></div>
-            </article>
-            <article className="campus-role campus-role-community">
-              <div className="campus-role-art" aria-hidden="true"><div className="campus-character campus-character-plan"><img src="/campus-character-planner.png" alt="" /><span className="campus-action-badge">🗂️</span><span className="campus-character-tag tag-one">活动统筹</span><span className="campus-character-tag tag-two">资源协调</span></div><span className="campus-role-label">社团服务</span><i>📌</i></div>
-              <div className="campus-role-copy"><span>2022.06 — 2023.05</span><p>ROLE 02 · 项目组织</p><h3>新闻与传播学院<br />社团服务中心</h3><strong>负责人</strong><p>统筹学院社团日常事务与活动支持，主办武汉大学公益广告大赛。</p><div><i>项目管理</i><i>活动策划</i><i>资源协调</i></div></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section className="football-section" id="football">
         <div className="breath-cluster breath-cluster-football" aria-hidden="true"><span>07</span><span>⚽</span><span>↗</span></div>
         <div className="football-heading">
           <div>
-            <p className="section-label">05 / BEYOND WORK</p>
-            <h2><span>我的 <b>7 号</b></span><em>球员档案</em></h2>
+
+            <div className="numbered-heading"><span className="section-number">04</span><h2><span>我的 <b>7 号</b></span><em>球员档案</em></h2></div>
           </div>
           <div className="football-intro">
-            <span>WUHAN UNIVERSITY WOMEN&apos;S FOOTBALL TEAM · NO. 7</span>
+
             <p>训练和比赛，是我理解沟通、判断和共同目标的另一种方式</p>
           </div>
         </div>
@@ -468,14 +438,14 @@ export default function Home() {
               {footballMoments.map((moment, index) => (
                 <figure className={index === footballIndex ? "is-active" : ""} aria-hidden={index !== footballIndex} key={moment.label}>
                   <img src={moment.image} alt={`谭美玲在足球比赛中${moment.label}`} loading="lazy" decoding="async" />
-                  <figcaption><span>WHU W.F.C. · NO. 7</span><strong>{moment.label}</strong></figcaption>
+                  <figcaption><strong>{moment.label}</strong></figcaption>
                 </figure>
               ))}
             </div>
           </div>
 
           <aside className="football-notebook" aria-label="足球带给我的能力">
-            <div className="football-scoreline"><span>PLAYER CARD</span><strong>07</strong><b>FORWARD / TEAM PLAYER</b></div>
+            <div className="football-scoreline"><strong>07</strong></div>
             <div className="football-mini-pitch" aria-hidden="true">
               <span className="pitch-circle" />
               <span className="pitch-line pitch-line-one" />
@@ -506,16 +476,15 @@ export default function Home() {
       <footer className="contact-section">
         <div className="contact-stage">
           <div className="contact-float contact-float-one">✦</div><div className="contact-float contact-float-two">💌</div><div className="contact-float contact-float-three">07</div>
-          <p className="section-label">06 / LET&apos;S CONNECT</p>
-          <p className="contact-kicker">THE NEXT GOOD STORY STARTS HERE</p>
+
+
           <h2><strong>下一段有趣的合作</strong><em>要不要一起开始？</em></h2>
-          <p>欢迎和我聊产品、内容、增长，或者一场值得被讲好的故事。</p>
           <a className="email-card" href="mailto:15549242057@163.com">
-            <span>DROP ME A LINE</span>
+            <span>发送邮件</span>
             <strong>15549242057@163.com</strong>
             <i>↗</i>
           </a>
-          <div className="contact-stickers" aria-hidden="true"><span>PRODUCT × CONTENT</span><span>WUHAN / BEIJING</span><span>READY TO CONNECT</span></div>
+
         </div>
         <div className="footer-bottom"><span>© 2026 谭美玲</span><span>武汉大学 · 产品运营与内容增长</span><a href="#top">回到顶部 ↑</a></div>
       </footer>
